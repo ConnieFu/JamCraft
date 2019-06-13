@@ -13,6 +13,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private Rigidbody2D m_CharacterRigidBody;
     private Vector3 m_Input = Vector3.zero;
 
+    [Header("Controls")]
+    [SerializeField] private InteractableTilemap m_InteractableTilemap;
+
     [Header("Animations")]
     [SerializeField] private Animator m_CharacterAnimator;
     [SerializeField] private SpriteRenderer m_CharacterSprite;
@@ -35,50 +38,63 @@ public class CharacterController : MonoBehaviour
         }
 
         transform.position = Vector3.zero;
-        gameObject.SetActive(true);
+        transform.parent.gameObject.SetActive(true);
+    }
+
+    public void ResetCharacter()
+    {
+        transform.parent.gameObject.SetActive(false);
     }
 
     private void FixedUpdate()
     {
-        if (!GameFlow.s_IsPaused)
+        if (!GameFlow.Instance.IsPaused)
         {
-            m_Input.x = Mathf.Lerp(0, Input.GetAxis("Horizontal") * m_Speed, LERP_VALUE);
-            m_Input.y = Mathf.Lerp(0, Input.GetAxis("Vertical") * m_Speed, LERP_VALUE);
+            HandleMovement();
 
-            m_CharacterAnimator.SetBool("IsMoving", m_Input.magnitude > 0.0f);
-
-            if (m_Input.y > 0)
-            {
-                m_FacingDirection = Vector3Int.up;
-                m_CharacterAnimator.SetInteger("Direction", 1);
-            }
-            else if (m_Input.y < 0)
-            {
-                m_FacingDirection = Vector3Int.down;
-                m_CharacterAnimator.SetInteger("Direction", 0);
-            }
-            else if (m_Input.x > 0)
-            {
-                m_FacingDirection = Vector3Int.right;
-                m_CharacterAnimator.SetInteger("Direction", 2);
-                m_CharacterSprite.flipX = false;
-            }
-            else if (m_Input.x < 0)
-            {
-                m_FacingDirection = Vector3Int.left;
-                m_CharacterAnimator.SetInteger("Direction", 2);
-                m_CharacterSprite.flipX = true;
-            }
-
-            m_CharacterRigidBody.velocity = m_Input;
+            UpdateSelectedTiles();
 
             // Handle Highlighting Tile in front of Character
             SetHighlightedTile();
+
+            InteractWithTile();
         }
     }
 
-    // gets list of tiles from tilemaps at the position of the character
-    private void SetHighlightedTile()
+    private void HandleMovement()
+    {
+        m_Input.x = Mathf.Lerp(0, Input.GetAxis("Horizontal") * m_Speed, LERP_VALUE);
+        m_Input.y = Mathf.Lerp(0, Input.GetAxis("Vertical") * m_Speed, LERP_VALUE);
+
+        m_CharacterAnimator.SetBool("IsMoving", m_Input.magnitude > 0.0f);
+
+        if (m_Input.y > 0)
+        {
+            m_FacingDirection = Vector3Int.up;
+            m_CharacterAnimator.SetInteger("Direction", 1);
+        }
+        else if (m_Input.y < 0)
+        {
+            m_FacingDirection = Vector3Int.down;
+            m_CharacterAnimator.SetInteger("Direction", 0);
+        }
+        else if (m_Input.x > 0)
+        {
+            m_FacingDirection = Vector3Int.right;
+            m_CharacterAnimator.SetInteger("Direction", 2);
+            m_CharacterSprite.flipX = false;
+        }
+        else if (m_Input.x < 0)
+        {
+            m_FacingDirection = Vector3Int.left;
+            m_CharacterAnimator.SetInteger("Direction", 2);
+            m_CharacterSprite.flipX = true;
+        }
+
+        m_CharacterRigidBody.velocity = m_Input;
+    }
+
+    private void UpdateSelectedTiles()
     {
         if (m_TileMaps != null && m_TileMaps.Count > 0)
         {
@@ -91,25 +107,33 @@ public class CharacterController : MonoBehaviour
                     m_SelectedTiles.Add(m_TileMaps[i].GetTile(m_CurrentTilePos));
                 }
             }
-
-            if (m_SelectedTiles.Count > 0)
-            {
-                m_TileHighlight.enabled = true;
-                m_CurrentHighlightPos = m_Grid.GetCellCenterWorld(m_CurrentTilePos);
-                m_CurrentHighlightPos.z = HIGHLIGHT_Z_DEPTH;
-                m_TileHighlight.transform.position = m_CurrentHighlightPos;
-            }
-            else
-            {
-                m_TileHighlight.enabled = false;
-            }
         }
     }
 
-    // Handle "X" Button clicked
-    // uses tile info
+    // gets list of tiles from tilemaps at the position of the character
+    private void SetHighlightedTile()
+    {
+        if (m_SelectedTiles.Count > 0)
+        {
+            m_TileHighlight.enabled = true;
+            m_CurrentHighlightPos = m_Grid.GetCellCenterWorld(m_CurrentTilePos);
+            m_CurrentHighlightPos.z = HIGHLIGHT_Z_DEPTH;
+            m_TileHighlight.transform.position = m_CurrentHighlightPos;
+        }
+        else
+        {
+            m_TileHighlight.enabled = false;
+        }   
+    }
+
     private void InteractWithTile()
     {
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (m_InteractableTilemap.CharacterInteraction(m_CurrentTilePos))
+            {
+                m_InteractableTilemap.RemoveInteractableObject(m_CurrentTilePos);
+            }
+        }
     }
 }
