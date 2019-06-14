@@ -12,8 +12,8 @@ public class PlantBase : PlayerInteractableBase
         {
             if (!m_IsBeingHeld) // player picks up plant
             {
-                m_CellXY = null;
                 controller.PickUpPlant(this);
+                m_CellXY = null;
                 m_IsBeingHeld = true;
             }
         }
