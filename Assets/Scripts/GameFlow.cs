@@ -12,6 +12,7 @@ public class GameFlow : MonoBehaviour
     [SerializeField] private CharacterController m_CharacterController;
     [SerializeField] private Grid m_Grid;
     [SerializeField] private InteractableTilemap m_InteractableTilemap;
+
     [SerializeField] private Transform m_FloatingResourcesParent;
 
     private bool m_IsPaused = false;
@@ -37,6 +38,14 @@ public class GameFlow : MonoBehaviour
         get
         {
             return m_Grid;
+        }
+    }
+
+    public InteractableTilemap InteractableTilemap
+    {
+        get
+        {
+            return m_InteractableTilemap;
         }
     }
 

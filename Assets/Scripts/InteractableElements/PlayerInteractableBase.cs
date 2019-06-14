@@ -4,36 +4,30 @@ using UnityEngine;
 
 public abstract class PlayerInteractableBase : MonoBehaviour
 {
-    private Vector3Int m_CellXY;
+    protected Vector3Int? m_CellXY;
 
     [SerializeField] protected int m_NumberHits = 1;
     protected int m_CurrentHits = 0;
-
-    protected InteractableTilemap m_InteractableTilemap;
 
     public Vector3Int CellXY
     {
         get
         {
-            return m_CellXY;
+            return m_CellXY.Value;
         }
     }
 
-    public virtual void Initialize(InteractableTilemap interactableTilemap)
+    public virtual void Initialize()
     {
         m_CurrentHits = 0;
         m_CellXY = GameFlow.Instance.Grid.WorldToCell(transform.position);
-        m_InteractableTilemap = interactableTilemap;
     }
 
     protected virtual void DestroySelf()
     {
-        m_InteractableTilemap.RemoveInteractableObject(this);
+        GameFlow.Instance.InteractableTilemap.RemoveInteractableObject(this);
         Destroy(gameObject);
     }
 
-    public virtual void OnInteracted(bool isChar = true)
-    {
-        m_CurrentHits++;
-    }
+    public abstract void OnInteracted(CharacterController controller);
 }

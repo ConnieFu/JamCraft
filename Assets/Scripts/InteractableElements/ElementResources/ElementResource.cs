@@ -6,9 +6,9 @@ public class ElementResource : PlayerInteractableBase
 {
     [SerializeField] protected int m_SpawnAmount = 3;
 
-    public override void OnInteracted(bool isChar = true)
+    public override void OnInteracted(CharacterController controller)
     {
-        if (isChar)
+        if (string.Compare(controller.tag, GameConstants.PLAYER_TAG) == 0)
         {
             m_CurrentHits++;
 

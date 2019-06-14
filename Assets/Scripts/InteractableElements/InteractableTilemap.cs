@@ -11,15 +11,21 @@ public class InteractableTilemap : MonoBehaviour
         RefreshInteractableObjects();
     }
 
-    public bool CharacterInteraction(Vector3Int cell, bool isChar = true)
+    public bool IsTileOccupied(Vector3Int cell)
     {
         if (m_InteractableObjects.ContainsKey(cell))
         {
-            m_InteractableObjects[cell].OnInteracted(isChar);
             return true;
         }
-
         return false;
+    }
+
+    public void CharacterInteraction(Vector3Int cell, CharacterController controller)
+    {
+        if (m_InteractableObjects.ContainsKey(cell))
+        {
+            m_InteractableObjects[cell].OnInteracted(controller);
+        }
     }
 
     public bool AddInteractableObject(PlayerInteractableBase obj)
@@ -52,7 +58,7 @@ public class InteractableTilemap : MonoBehaviour
         m_InteractableObjects.Clear();
         foreach (PlayerInteractableBase interactableObject in transform.GetComponentsInChildren<PlayerInteractableBase>())
         {
-            interactableObject.Initialize(this);
+            interactableObject.Initialize();
             m_InteractableObjects.Add(interactableObject.CellXY, interactableObject);
         }
     }

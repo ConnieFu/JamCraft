@@ -14,12 +14,16 @@ public class CharacterController : MonoBehaviour
     private Vector3 m_Input = Vector3.zero;
 
     [Header("Controls")]
-    [SerializeField] private InteractableTilemap m_InteractableTilemap;
+    [SerializeField] private Transform m_HoldAnchor;
+    public PlantBase m_HeldPlant = null;
 
     [Header("Animations")]
     [SerializeField] private Animator m_CharacterAnimator;
     [SerializeField] private SpriteRenderer m_CharacterSprite;
     private Vector3Int m_FacingDirection = Vector3Int.down;
+
+    [Header("ResourceManagement")]
+    [SerializeField] private CharacterPickUp m_CharacterPickUp;
 
     [Header("")]
     [SerializeField] private Grid m_Grid;
@@ -130,10 +134,30 @@ public class CharacterController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (m_InteractableTilemap.CharacterInteraction(m_CurrentTilePos))
+            if (m_HeldPlant == null) // can't do anything while holding a plant
             {
-                m_InteractableTilemap.RemoveInteractableObject(m_CurrentTilePos);
+                GameFlow.Instance.InteractableTilemap.CharacterInteraction(m_CurrentTilePos, this);
+            } 
+            else // put plant down
+            {
+                PutPlantDown();
             }
+        }
+    }
+
+    public void PickUpPlant(PlantBase plant)
+    {
+        m_HeldPlant = plant;
+        plant.transform.parent = m_HoldAnchor;
+        plant.transform.localPosition = Vector3.zero;
+    }
+
+    private void PutPlantDown()
+    {
+        if (!GameFlow.Instance.InteractableTilemap.IsTileOccupied(m_CurrentTilePos))
+        {
+            m_HeldPlant.PlacePlant(m_CurrentTilePos);
+            m_HeldPlant = null;
         }
     }
 }
