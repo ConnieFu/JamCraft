@@ -20,6 +20,7 @@ public class CharacterController : MonoBehaviour
     [Header("Animations")]
     [SerializeField] private Animator m_CharacterAnimator;
     [SerializeField] private SpriteRenderer m_CharacterSprite;
+
     private Vector3Int m_FacingDirection = Vector3Int.down;
 
     [Header("ResourceManagement")]
@@ -43,6 +44,8 @@ public class CharacterController : MonoBehaviour
 
         transform.position = Vector3.zero;
         transform.parent.gameObject.SetActive(true);
+
+        m_CharacterPickUp.EnergyManager.Initialize();
     }
 
     public void ResetCharacter()
@@ -62,6 +65,13 @@ public class CharacterController : MonoBehaviour
             SetHighlightedTile();
 
             InteractWithTile();
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GameFlow.Instance.HideCraftingMenu();
+            }
         }
     }
 
@@ -127,7 +137,7 @@ public class CharacterController : MonoBehaviour
         else
         {
             m_TileHighlight.enabled = false;
-        }   
+        }
     }
 
     private void InteractWithTile()
@@ -137,7 +147,7 @@ public class CharacterController : MonoBehaviour
             if (m_HeldPlant == null) // can't do anything while holding a plant
             {
                 GameFlow.Instance.InteractableTilemap.CharacterInteraction(m_CurrentTilePos, this);
-            } 
+            }
             else // put plant down
             {
                 PutPlantDown();

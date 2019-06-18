@@ -5,6 +5,7 @@ using UnityEngine;
 public class ElementResource : PlayerInteractableBase
 {
     [SerializeField] protected int m_SpawnAmount = 3;
+    [SerializeField] protected GameConstants.eEnergyType m_ResourceType = GameConstants.eEnergyType.DEFAULT;
 
     public override void OnInteracted(CharacterController controller)
     {
@@ -25,7 +26,7 @@ public class ElementResource : PlayerInteractableBase
     {
         for (int i = 0; i < m_SpawnAmount; i++)
         {
-            Instantiate(Resources.Load(GameConstants.DEFAULT_RESOURCE_PREFAB_PATH), transform.position, Quaternion.identity, GameFlow.Instance.FloatingResourcesParent);
+            Instantiate(Resources.Load(string.Format(GameConstants.ENERGY_PREFAB_PATH, m_ResourceType.ToString())), transform.position, Quaternion.identity, GameFlow.Instance.FloatingResourcesParent);
         }
     }
 }

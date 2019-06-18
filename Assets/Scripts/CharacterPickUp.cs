@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class CharacterPickUp : MonoBehaviour
 {
-    private Dictionary<GameConstants.eResourceType, int> m_Resources = new Dictionary<GameConstants.eResourceType, int>();
+    [SerializeField] private EnergyManager m_EnergyManager;
 
-    public void AddResource(GameConstants.eResourceType resourceType)
+    public EnergyManager EnergyManager
     {
-        if (!m_Resources.ContainsKey(resourceType))
+        get
         {
-            m_Resources.Add(resourceType, 0);
+            return m_EnergyManager;
         }
-
-        m_Resources[resourceType]++;
     }
 
-    public void RemoveResource(GameConstants.eResourceType resourceType)
+    public void OnResourcePickedUp(GameConstants.eEnergyType energy)
     {
-        if (m_Resources.ContainsKey(resourceType))
-        {
-            m_Resources[resourceType]--;
-        }
+		m_EnergyManager.AddEnergy(energy);
     }
 }

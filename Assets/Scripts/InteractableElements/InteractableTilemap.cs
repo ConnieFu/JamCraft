@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class InteractableTilemap : MonoBehaviour
 {
+    [SerializeField] private Transform m_PlantAnchor;
+    public Transform PlantAnchor
+    {
+        get
+        {
+            return m_PlantAnchor;
+        }
+    }
+
+    [SerializeField] private Transform m_EnergyResourceAnchor;
+    public Transform EnergyResourceAnchor
+    {
+        get
+        {
+            return m_EnergyResourceAnchor;
+        }
+    }
+
     private Dictionary<Vector3Int, PlayerInteractableBase> m_InteractableObjects = new Dictionary<Vector3Int, PlayerInteractableBase>();
 
     public void Initialize()
@@ -36,7 +54,7 @@ public class InteractableTilemap : MonoBehaviour
             m_InteractableObjects.Add(obj.CellXY, obj);
             return true;
         }
-     
+
         return false;
     }
 
