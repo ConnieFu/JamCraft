@@ -37,7 +37,37 @@ public class CraftingManager : MonoBehaviour
         if (m_SelectedSlot.EnergyType != null)
         {
             m_EnergyManager.AddEnergy(m_SelectedSlot.EnergyType.Value);
-            m_SelectedSlot.RemovePreviousEnergy();
+            m_SelectedSlot.ClearSlot();
+        }
+    }
+
+    public void CraftPlant()
+    {
+        if (!AreSlotsEmpty())
+        {
+            Debug.LogError("CRAFT SOMETHING");
+            ClearSlots();
+        }
+    }
+
+    private bool AreSlotsEmpty()
+    {
+        for (int i = 0; i < m_CraftingSlots.Count; i++)
+        {
+            if (m_CraftingSlots[i].EnergyType == null)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void ClearSlots()
+    {
+        for (int i = 0; i < m_CraftingSlots.Count; i++)
+        {
+            m_CraftingSlots[i].ClearSlot();
         }
     }
 }

@@ -62,7 +62,7 @@ public class CraftingSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         m_EnergyTransform.localPosition = Vector3.zero;
     }
 
-    public void RemovePreviousEnergy()
+    public void ClearSlot()
     {
         m_EnergyType = null;
         Destroy(m_EnergyTransform.gameObject);
