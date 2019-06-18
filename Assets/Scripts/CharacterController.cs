@@ -157,7 +157,10 @@ public class CharacterController : MonoBehaviour
 
     public void PickUpPlant(PlantBase plant)
     {
-        GameFlow.Instance.InteractableTilemap.RemoveInteractableObject(plant);
+        if (plant.CellXY.HasValue)
+        {
+            GameFlow.Instance.InteractableTilemap.RemoveInteractableObject(plant);
+        }
         m_HeldPlant = plant;
         plant.transform.parent = m_HoldAnchor;
         plant.transform.localPosition = Vector3.zero;

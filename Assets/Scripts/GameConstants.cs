@@ -10,8 +10,8 @@ public class GameConstants
     public const string CRAFTING_MENU_NAME = "CraftingMenu";
 
     public const string ENERGY_PREFAB_PATH = "Prefabs/CraftingEnergy/{0}Energy";
-    public const string STATCI_ENERGY_PREFAB_PATH = "Prefabs/CraftingEnergy/EnergyStatic/{0}Energy";
-
+    public const string STATIC_ENERGY_PREFAB_PATH = "Prefabs/CraftingEnergy/EnergyStatic/{0}Energy";
+    public const string BASE_PLANT_PREFAB = "Prefabs/PlantPrefab";
 
     public const string PLAYER_PICKUP_COLLIDER_TAG = "PlayerPickUp";
     public const string PLAYER_TAG = "Player";

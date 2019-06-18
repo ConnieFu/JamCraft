@@ -33,6 +33,14 @@ public class PlantBase : PlayerInteractableBase
         }
     }
 
+    public override void Initialize()
+    {
+        if (!m_IsBeingHeld)
+        {
+            base.Initialize();
+        }
+    }
+
     public void PlacePlant(Vector3Int cell)
     {
         m_IsBeingHeld = false;

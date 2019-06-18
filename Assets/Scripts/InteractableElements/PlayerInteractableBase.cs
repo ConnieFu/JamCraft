@@ -9,11 +9,11 @@ public abstract class PlayerInteractableBase : MonoBehaviour
     [SerializeField] protected int m_NumberHits = 1;
     protected int m_CurrentHits = 0;
 
-    public Vector3Int CellXY
+    public Vector3Int? CellXY
     {
         get
         {
-            return m_CellXY.Value;
+            return m_CellXY;
         }
     }
 

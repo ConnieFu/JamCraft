@@ -92,6 +92,14 @@ public class GameFlow : MonoBehaviour
             m_CraftingMenuClosed = value;
         }
     }
+
+    public CharacterController CharacterController
+    {
+        get
+        {
+            return m_CharacterController;
+        }
+    }
     #endregion
 
     void Awake()

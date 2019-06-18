@@ -27,7 +27,7 @@ public class CraftingManager : MonoBehaviour
         if (m_EnergyManager.GetNumberEnergyOfType(energySlot.EnergyType) > 0 && m_SelectedSlot != null)
         {
             RemoveSelectedSlotEnergy();
-            m_SelectedSlot.AddEnergyToSlot((GameObject)Instantiate(Resources.Load(string.Format(GameConstants.STATCI_ENERGY_PREFAB_PATH, energySlot.EnergyType.ToString()))), energySlot.EnergyType);
+            m_SelectedSlot.AddEnergyToSlot((GameObject)Instantiate(Resources.Load(string.Format(GameConstants.STATIC_ENERGY_PREFAB_PATH, energySlot.EnergyType.ToString()))), energySlot.EnergyType);
             m_EnergyManager.RemoveEnergy(energySlot.EnergyType);
         }
     }
@@ -47,6 +47,9 @@ public class CraftingManager : MonoBehaviour
         {
             Debug.LogError("CRAFT SOMETHING");
             ClearSlots();
+
+            GameFlow.Instance.HideCraftingMenu();
+            ((GameObject)Instantiate(Resources.Load(GameConstants.BASE_PLANT_PREFAB))).GetComponent<PlantBase>().OnInteracted(GameFlow.Instance.CharacterController);
         }
     }
 

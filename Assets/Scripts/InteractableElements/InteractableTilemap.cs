@@ -49,9 +49,9 @@ public class InteractableTilemap : MonoBehaviour
     public bool AddInteractableObject(PlayerInteractableBase obj)
     {
         // check if object can be added, if so add to dictionary and return true else return false
-        if (!m_InteractableObjects.ContainsKey(obj.CellXY))
+        if (!m_InteractableObjects.ContainsKey(obj.CellXY.Value))
         {
-            m_InteractableObjects.Add(obj.CellXY, obj);
+            m_InteractableObjects.Add(obj.CellXY.Value, obj);
             return true;
         }
 
@@ -68,7 +68,7 @@ public class InteractableTilemap : MonoBehaviour
 
     public void RemoveInteractableObject(PlayerInteractableBase obj)
     {
-        RemoveInteractableObject(obj.CellXY);
+        RemoveInteractableObject(obj.CellXY.Value);
     }
 
     private void RefreshInteractableObjects()
@@ -77,7 +77,7 @@ public class InteractableTilemap : MonoBehaviour
         foreach (PlayerInteractableBase interactableObject in transform.GetComponentsInChildren<PlayerInteractableBase>())
         {
             interactableObject.Initialize();
-            m_InteractableObjects.Add(interactableObject.CellXY, interactableObject);
+            m_InteractableObjects.Add(interactableObject.CellXY.Value, interactableObject);
         }
     }
 }
