@@ -6,27 +6,5 @@ public class GameConstants
 {
     public const string MAIN_MENU_SCENE_NAME = "MainMenu";
     public const string PAUSE_MENU_SCENE_NAME = "PauseMenu";
-<<<<<<< Updated upstream
     public const string GAME_OVER_MENU_SCENE_NAME = "GameOverMenu";
-=======
-    public const string GAME_OVER_MENU_SCENE_NAME = "GameOverMenu";
-    public const string CRAFTING_MENU_NAME = "CraftingUI";
-
-    public const string ENERGY_PREFAB_PATH = "Prefabs/CraftingEnergy/{0}Energy";
-
-    public const string PLAYER_PICKUP_COLLIDER_TAG = "PlayerPickUp";
-    public const string PLAYER_TAG = "Player";
-
-    public const string INTERACTABLE_LAYER_NAME = "Interactable";
-    public const string PLAYER_LAYER_NAME = "Player";
-
-    public enum eEnergyType
-    {
-        DEFAULT = 0,
-        FIRE,
-        WATER,
-        EARTH,
-        AIR
-    }
->>>>>>> Stashed changes
 }
