@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnergyManager : MonoBehaviour
 {
     [SerializeField] private List<EnergyUISlot> m_EnergyUISlots;
+    [SerializeField] private CraftingManager m_CraftingManager; // this is so gross...but I don't wanna fix it yet...running out of time
 
     private Dictionary<GameConstants.eEnergyType, int> m_Energy = new Dictionary<GameConstants.eEnergyType, int>();
 
@@ -14,7 +15,7 @@ public class EnergyManager : MonoBehaviour
 
         for (int i = 0; i < m_EnergyUISlots.Count; i++)
         {
-            m_EnergyUISlots[i].Initialize();
+            m_EnergyUISlots[i].Initialize(m_CraftingManager.CheckIfOnSlot);
         }
     }
 
@@ -26,14 +27,8 @@ public class EnergyManager : MonoBehaviour
         }
 
         m_Energy[energy]++;
-      
-        for (int i = 0; i < m_EnergyUISlots.Count; i++)
-        {
-            if (m_EnergyUISlots[i].EnergyType == energy)
-            {
-                m_EnergyUISlots[i].UpdateText(m_Energy[energy].ToString());
-            }
-        }
+
+        UpdateEnergyUIText(energy);
     }
 
     public void RemoveEnergy(GameConstants.eEnergyType energy)
@@ -42,6 +37,8 @@ public class EnergyManager : MonoBehaviour
         {
             m_Energy[energy]--;
         }
+
+        UpdateEnergyUIText(energy);
     }
 
     public int GetNumberEnergyOfType(GameConstants.eEnergyType energyType)
@@ -52,6 +49,17 @@ public class EnergyManager : MonoBehaviour
         }
 
         return 0;
+    }
+
+    private void UpdateEnergyUIText(GameConstants.eEnergyType energy)
+    {
+        for (int i = 0; i < m_EnergyUISlots.Count; i++)
+        {
+            if (m_EnergyUISlots[i].EnergyType == energy)
+            {
+                m_EnergyUISlots[i].UpdateText(m_Energy[energy].ToString());
+            }
+        }
     }
 
     public void OnCraftingUIClosed()

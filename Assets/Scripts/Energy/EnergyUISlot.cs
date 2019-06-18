@@ -19,15 +19,31 @@ public class EnergyUISlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     [Header("")]
     [SerializeField] private Text m_Text;
     [SerializeField] private GameObject m_DraggingIcon;
+    [SerializeField] private CanvasGroup m_CanvasGroup;
 
     private RectTransform m_DraggingPlane;
+    private RectTransform m_IconRectTransform;
+
     private Vector3 m_GlobalMousePos;
     private Vector3 m_StartPosition;
 
-    public void Initialize()
+    public delegate void CheckIfOnSlot(EnergyUISlot energySlot);
+    public CheckIfOnSlot m_CheckIfOnSlot;
+
+    public RectTransform IconRectTransform
     {
+        get
+        {
+            return m_IconRectTransform;
+        }
+    }
+
+    public void Initialize(CheckIfOnSlot checkSlot)
+    {
+        m_CheckIfOnSlot = checkSlot;
         m_StartPosition = m_DraggingIcon.transform.position;
         m_DraggingPlane = GameFlow.Instance.Canvas.transform as RectTransform;
+        m_IconRectTransform = m_DraggingIcon.GetComponent<RectTransform>();
     }
 
     public void UpdateText(string newText)
@@ -48,6 +64,7 @@ public class EnergyUISlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (GameFlow.Instance.IsCrafting && GameFlow.Instance.IsPaused)
         {
             SetDraggedPosition(eventData);
+            m_CanvasGroup.blocksRaycasts = false;
         }
     }
 
@@ -61,12 +78,10 @@ public class EnergyUISlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     private void SetDraggedPosition(PointerEventData data)
     {
-        RectTransform rt = m_DraggingIcon.GetComponent<RectTransform>();
-        
         if (RectTransformUtility.ScreenPointToWorldPointInRectangle(m_DraggingPlane, data.position, data.pressEventCamera, out m_GlobalMousePos))
         {
-            rt.position = m_GlobalMousePos;
-            rt.rotation = m_DraggingPlane.rotation;
+            m_IconRectTransform.position = m_GlobalMousePos;
+            m_IconRectTransform.rotation = m_DraggingPlane.rotation;
         }
     }
 
@@ -75,7 +90,13 @@ public class EnergyUISlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         // snap back to original position
         m_DraggingIcon.transform.position = m_StartPosition;
+        m_CanvasGroup.blocksRaycasts = true;
+
 
         // check if on top of slot position and add one thingy to slot
+        if (m_CheckIfOnSlot != null)
+        {
+            m_CheckIfOnSlot(this);
+        }
     }
 }
