@@ -9,11 +9,29 @@ public class CraftingManager : MonoBehaviour
 
     private CraftingSlot m_SelectedSlot = null;
 
+    // no time to make this cleaner... just gonna make new variables for things that already exist lmfao - 3-
+    private CraftingSlot m_FlowerSlot;
+    private CraftingSlot m_StemSlot;
+    private CraftingSlot m_BaseSlot;
+
     public void Initialize()
     {
         for (int i = 0; i < m_CraftingSlots.Count; i++)
         {
             m_CraftingSlots[i].Initialize(this);
+
+            switch (m_CraftingSlots[i].SlotType)
+            {
+                case GameConstants.eSlot.FLOWER:
+                    m_FlowerSlot = m_CraftingSlots[i];
+                    break;
+                case GameConstants.eSlot.STEM:
+                    m_StemSlot = m_CraftingSlots[i];
+                    break;
+                case GameConstants.eSlot.BASE:
+                    m_BaseSlot = m_CraftingSlots[i];
+                    break;
+            }
         }
     }
 
@@ -45,11 +63,12 @@ public class CraftingManager : MonoBehaviour
     {
         if (!AreSlotsEmpty())
         {
-            Debug.LogError("CRAFT SOMETHING");
-            ClearSlots();
+            PlantBase plant = ((GameObject)Instantiate(Resources.Load(GameConstants.BASE_PLANT_PREFAB_PATH))).GetComponent<PlantBase>();
+            plant.Initialize(m_FlowerSlot.EnergyType.Value, m_StemSlot.EnergyType.Value, m_BaseSlot.EnergyType.Value);
+            plant.OnInteracted(GameFlow.Instance.CharacterController);
 
+            ClearSlots();
             GameFlow.Instance.HideCraftingMenu();
-            ((GameObject)Instantiate(Resources.Load(GameConstants.BASE_PLANT_PREFAB))).GetComponent<PlantBase>().OnInteracted(GameFlow.Instance.CharacterController);
         }
     }
 

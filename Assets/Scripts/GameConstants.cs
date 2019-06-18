@@ -11,7 +11,9 @@ public class GameConstants
 
     public const string ENERGY_PREFAB_PATH = "Prefabs/CraftingEnergy/{0}Energy";
     public const string STATIC_ENERGY_PREFAB_PATH = "Prefabs/CraftingEnergy/EnergyStatic/{0}Energy";
-    public const string BASE_PLANT_PREFAB = "Prefabs/PlantPrefab";
+
+	public const string BASE_PLANT_PREFAB_PATH = "Prefabs/PlantComponents/PlantPrefab";
+	public const string PLANT_COMPONENT_PREFAB_PATH = "Prefabs/PlantComponents/{0}/{1}_{0}";
 
     public const string PLAYER_PICKUP_COLLIDER_TAG = "PlayerPickUp";
     public const string PLAYER_TAG = "Player";
