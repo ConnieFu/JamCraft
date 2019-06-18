@@ -8,6 +8,7 @@ TagManager:
   - PickUp
   - PlayerPickUp
   - Projectile
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -57,7 +58,7 @@ TagManager:
   - name: Energy
     uniqueID: 3469507713
     locked: 0
-  - name: Player
+  - name: Characters
     uniqueID: 1939688483
     locked: 0
   - name: Projectile

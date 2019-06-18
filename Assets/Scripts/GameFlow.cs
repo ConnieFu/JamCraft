@@ -10,10 +10,11 @@ public class GameFlow : MonoBehaviour
     [SerializeField] private Canvas m_Canvas;
 
     [Header("Gameplay Elements")]
-    [SerializeField] private CharacterController m_CharacterController;
+    [SerializeField] private Player m_PlayerController;
     [SerializeField] private Grid m_Grid;
     [SerializeField] private InteractableTilemap m_InteractableTilemap;
     [SerializeField] private CraftingManager m_CraftingManager;
+    [SerializeField] private EnemySpawner m_EnemySpawner;
 
     [SerializeField] private Transform m_FloatingResourcesParent;
 
@@ -93,11 +94,11 @@ public class GameFlow : MonoBehaviour
         }
     }
 
-    public CharacterController CharacterController
+    public Player PlayerController
     {
         get
         {
-            return m_CharacterController;
+            return m_PlayerController;
         }
     }
     #endregion
@@ -123,9 +124,10 @@ public class GameFlow : MonoBehaviour
         // initialize gameplay elements
         if (!resumed)
         {
-            m_CharacterController.Initialize();
+            m_PlayerController.Initialize();
             m_InteractableTilemap.Initialize();
             m_CraftingManager.Initialize();
+            m_EnemySpawner.Initialize();
         }
         m_IsPaused = false;
         m_UIHandler.ToggleMenuUI(false);

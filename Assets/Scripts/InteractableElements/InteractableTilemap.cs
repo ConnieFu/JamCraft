@@ -38,7 +38,7 @@ public class InteractableTilemap : MonoBehaviour
         return false;
     }
 
-    public void CharacterInteraction(Vector3Int cell, CharacterController controller)
+    public void CharacterInteraction(Vector3Int cell, CharacterBase controller)
     {
         if (m_InteractableObjects.ContainsKey(cell))
         {

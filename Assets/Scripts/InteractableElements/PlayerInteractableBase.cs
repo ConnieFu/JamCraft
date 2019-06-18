@@ -29,5 +29,5 @@ public abstract class PlayerInteractableBase : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public abstract void OnInteracted(CharacterController controller);
+    public abstract void OnInteracted(CharacterBase controller);
 }

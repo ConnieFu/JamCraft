@@ -20,20 +20,20 @@ public class PlantBase : PlayerInteractableBase
         }
     }
 
-    public override void OnInteracted(CharacterController controller)
+    public override void OnInteracted(CharacterBase controller)
     {
         if (string.Compare(controller.tag, GameConstants.PLAYER_TAG) == 0)
         {
             if (!m_IsBeingHeld) // player picks up plant
             {
-                controller.PickUpPlant(this);
+                controller.GetComponent<Player>().PickUpPlant(this);
                 m_CellXY = null;
                 m_IsBeingHeld = true;
 
                 ChangeRendererSortingLayers(GameConstants.PLAYER_LAYER_NAME);
             }
         }
-        else
+        else // it's an enemyyyyyy
         {
             m_CurrentHits++;
 
@@ -105,5 +105,5 @@ public class PlantBase : PlayerInteractableBase
         plantInfo.attackPosition = m_FlowerComponent.AttackStartAnchor;
 
         m_PlantController.SetPlantInfo(plantInfo, this);
-    }   
+    }
 }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private CharacterController m_Target;
+    private Enemy m_Target;
     private float m_Damage;
     private GameConstants.eEnergyType m_DamageType;
 
     private bool m_IsInitialized = false;
 
-    public void InitializeProjectile(CharacterController target, float damage, GameConstants.eEnergyType damageType)
+    public void InitializeProjectile(Enemy target, float damage, GameConstants.eEnergyType damageType)
     {
         m_Damage = damage;
         m_DamageType = damageType;
@@ -28,22 +28,13 @@ public class Projectile : MonoBehaviour
             if (direction.magnitude <= GameConstants.PROJECTILE_HIT_DISTANCE)
             {
                 m_IsInitialized = false;
+                m_Target.TakeDamage(m_Damage, m_DamageType);
                 ProjectilePool.Instance.ReturnProjectile(this);
             }
             else
             {
                 transform.position += direction.normalized * GameConstants.PROJECTILE_SPEED;
             }
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.GetComponent<CharacterController>() != null && collision.GetComponent<CharacterController>() == m_Target)
-        {
-            // deal damage to target
-
-            
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CraftingTable : PlayerInteractableBase
 {
-    public override void OnInteracted(CharacterController controller)
+    public override void OnInteracted(CharacterBase controller)
     {
         GameFlow.Instance.ShowCraftingMenu();
     }

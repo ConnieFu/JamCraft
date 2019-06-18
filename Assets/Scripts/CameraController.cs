@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private Vector2 m_CameraYBounds;
-    [SerializeField] private CharacterController m_Character;
+    [SerializeField] private Player m_Character;
 
     private Vector3 m_CurrentPos = new Vector3();
     private float m_CharacterYPos = 0.0f;

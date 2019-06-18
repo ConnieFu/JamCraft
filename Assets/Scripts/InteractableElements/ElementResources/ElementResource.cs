@@ -7,7 +7,7 @@ public class ElementResource : PlayerInteractableBase
     [SerializeField] protected int m_SpawnAmount = 3;
     [SerializeField] protected GameConstants.eEnergyType m_ResourceType = GameConstants.eEnergyType.DEFAULT;
 
-    public override void OnInteracted(CharacterController controller)
+    public override void OnInteracted(CharacterBase controller)
     {
         if (string.Compare(controller.tag, GameConstants.PLAYER_TAG) == 0)
         {

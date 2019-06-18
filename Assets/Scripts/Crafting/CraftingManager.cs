@@ -65,7 +65,7 @@ public class CraftingManager : MonoBehaviour
         {
             PlantBase plant = ((GameObject)Instantiate(Resources.Load(GameConstants.BASE_PLANT_PREFAB_PATH))).GetComponent<PlantBase>();
             plant.Initialize(m_FlowerSlot.EnergyType.Value, m_StemSlot.EnergyType.Value, m_RootSlot.EnergyType.Value);
-            plant.OnInteracted(GameFlow.Instance.CharacterController);
+            plant.OnInteracted(GameFlow.Instance.PlayerController);
 
             ClearSlots();
             GameFlow.Instance.HideCraftingMenu();

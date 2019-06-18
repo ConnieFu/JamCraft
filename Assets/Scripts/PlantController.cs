@@ -19,10 +19,10 @@ public class PlantController : MonoBehaviour
     private PlantBase m_PlantBase;
     private sPlantData m_PlantInfo;
 
-    private CharacterController m_EnteringEnemy = null;
-    private CharacterController m_ExitingEnemy = null;
-    private List<CharacterController> m_NearbyEnemies = new List<CharacterController>(); // CHANGE THIS TO ENEMIES LATER
-    private CharacterController m_ClosestEnemy = null;
+    private Enemy m_EnteringEnemy = null;
+    private Enemy m_ExitingEnemy = null;
+    private List<Enemy> m_NearbyEnemies = new List<Enemy>();
+    private Enemy m_ClosestEnemy = null;
 
     private float m_AttackTimer = 0.0f;
 
@@ -64,7 +64,7 @@ public class PlantController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        m_EnteringEnemy = collision.GetComponent<CharacterController>();
+        m_EnteringEnemy = collision.GetComponent<Enemy>();
         if (m_EnteringEnemy != null)
         {
             m_NearbyEnemies.Add(m_EnteringEnemy);
@@ -74,7 +74,7 @@ public class PlantController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        m_ExitingEnemy = collision.GetComponent<CharacterController>();
+        m_ExitingEnemy = collision.GetComponent<Enemy>();
         if (m_ExitingEnemy != null && m_NearbyEnemies.Contains(m_ExitingEnemy))
         {
             m_NearbyEnemies.Remove(m_ExitingEnemy);
@@ -111,9 +111,10 @@ public class PlantController : MonoBehaviour
     private void AttackNearbyEnemies()
     {
         // AOE DAMAGE HELL YEAH
-        foreach(CharacterController controller in m_NearbyEnemies)
+        foreach(Enemy enemy in m_NearbyEnemies)
         {
             // deal damage to the enemy
+            enemy.TakeDamage(m_PlantInfo.damageAmt, m_PlantInfo.damageType);
         }
     }
 }
