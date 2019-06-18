@@ -10,5 +10,14 @@ public class CraftingManager : MonoBehaviour
 
     public void Initialize()
     {
+        for (int i = 0; i < m_CratingSlots.Count; i++)
+        {
+            m_CratingSlots[i].Initialize(this);
+        }
+    }
+
+    public void SetSelectedSlot(CraftingSlot slot)
+    {
+        m_SelectedSlot = slot;
     }
 }

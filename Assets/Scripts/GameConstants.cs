@@ -7,7 +7,7 @@ public class GameConstants
     public const string MAIN_MENU_SCENE_NAME = "MainMenu";
     public const string PAUSE_MENU_SCENE_NAME = "PauseMenu";
     public const string GAME_OVER_MENU_SCENE_NAME = "GameOverMenu";
-    public const string CRAFTING_MENU_NAME = "CraftingUI";
+    public const string CRAFTING_MENU_NAME = "CraftingMenu";
 
     public const string ENERGY_PREFAB_PATH = "Prefabs/CraftingEnergy/{0}Energy";
 
@@ -24,5 +24,12 @@ public class GameConstants
         WATER,
         EARTH,
         AIR
+    }
+
+    public enum eSlot
+    {
+        FLOWER = 0,
+        STEM,
+        BASE
     }
 }

@@ -5,7 +5,16 @@ using UnityEngine.EventSystems;
 
 public class CraftingSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+   [SerializeField] private GameConstants.eSlot m_SlotType;
     private CraftingManager m_CraftingManager;
+
+    public GameConstants.eSlot SlotType
+    {
+        get
+        {
+            return m_SlotType;
+        }
+    }
 
     public void Initialize(CraftingManager manager)
     {
@@ -14,11 +23,11 @@ public class CraftingSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("The cursor entered the selectable UI element.");
+        m_CraftingManager.SetSelectedSlot(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("The cursor exited the selectable UI element.");
+        m_CraftingManager.SetSelectedSlot(null);
     }
 }
