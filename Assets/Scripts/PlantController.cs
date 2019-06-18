@@ -111,5 +111,9 @@ public class PlantController : MonoBehaviour
     private void AttackNearbyEnemies()
     {
         // AOE DAMAGE HELL YEAH
+        foreach(CharacterController controller in m_NearbyEnemies)
+        {
+            // deal damage to the enemy
+        }
     }
 }
