@@ -21,6 +21,9 @@ public class GameConstants
     public const string INTERACTABLE_LAYER_NAME = "Interactable";
     public const string PLAYER_LAYER_NAME = "Player";
 
+    public const float PROJECTILE_SPEED = 0.25f;
+    public const float PROJECTILE_HIT_DISTANCE = 0.25f;
+
     public enum eEnergyType
     {
         DEFAULT = 0,

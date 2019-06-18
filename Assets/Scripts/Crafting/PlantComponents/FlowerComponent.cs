@@ -24,4 +24,11 @@ public class FlowerComponent : PlantComponentBase
 
     [Header("")]
     [SerializeField] private Transform m_AttackStartAnchor;
+    public Transform AttackStartAnchor
+    {
+        get
+        {
+            return m_AttackStartAnchor;
+        }
+    }
 }

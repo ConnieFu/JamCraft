@@ -12,7 +12,6 @@ public class PlantBase : PlayerInteractableBase
     private RootComponent m_RootComponent;
 
     protected bool m_IsBeingHeld = false;
-
     public bool IsBeingHeld
     {
         get
@@ -102,6 +101,8 @@ public class PlantBase : PlayerInteractableBase
         m_NumberHits = plantInfo.health;
         // set range
         plantInfo.attackRange = m_StemComponent.AttackRange;
+        // set attack start position
+        plantInfo.attackPosition = m_FlowerComponent.AttackStartAnchor;
 
         m_PlantController.SetPlantInfo(plantInfo, this);
     }   

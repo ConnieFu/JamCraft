@@ -12,6 +12,7 @@ public class PlantController : MonoBehaviour
         public float attackRange;
         public float attackSpeed;
         public int health;
+        public Transform attackPosition;
         public GameConstants.eEnergyType damageType; // if enemy is weak to damage type, double damage done to enemy
     }
 
@@ -97,15 +98,18 @@ public class PlantController : MonoBehaviour
 
         if (m_ClosestEnemy != null)
         {
-            Debug.LogError("ATTACKKKK");
             // shoot projectile or whatever at target (follows target)
             // target handles collision of projectile
+            Projectile projectile = ProjectilePool.Instance.GetAvailableProjectile();
+            projectile.transform.position = m_PlantInfo.attackPosition.position;
+            projectile.InitializeProjectile(m_ClosestEnemy, m_PlantInfo.damageAmt, m_PlantInfo.damageType);
+
             m_ClosestEnemy = null;
         }
     }
 
     private void AttackNearbyEnemies()
     {
-
+        // AOE DAMAGE HELL YEAH
     }
 }

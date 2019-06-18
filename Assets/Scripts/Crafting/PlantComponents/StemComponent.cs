@@ -22,7 +22,7 @@ public class StemComponent : PlantComponentBase
         }
     }
 
-    [SerializeField] private float m_AttackRange = 3.0f;
+    [SerializeField] private float m_AttackRange = 5.0f;
     public float AttackRange
     {
         get
