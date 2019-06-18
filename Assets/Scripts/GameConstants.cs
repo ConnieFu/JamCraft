@@ -34,6 +34,6 @@ public class GameConstants
     {
         FLOWER = 0,
         STEM,
-        BASE
+        ROOT
     }
 }

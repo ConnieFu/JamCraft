@@ -12,7 +12,7 @@ public class CraftingManager : MonoBehaviour
     // no time to make this cleaner... just gonna make new variables for things that already exist lmfao - 3-
     private CraftingSlot m_FlowerSlot;
     private CraftingSlot m_StemSlot;
-    private CraftingSlot m_BaseSlot;
+    private CraftingSlot m_RootSlot;
 
     public void Initialize()
     {
@@ -28,8 +28,8 @@ public class CraftingManager : MonoBehaviour
                 case GameConstants.eSlot.STEM:
                     m_StemSlot = m_CraftingSlots[i];
                     break;
-                case GameConstants.eSlot.BASE:
-                    m_BaseSlot = m_CraftingSlots[i];
+                case GameConstants.eSlot.ROOT:
+                    m_RootSlot = m_CraftingSlots[i];
                     break;
             }
         }
@@ -64,7 +64,7 @@ public class CraftingManager : MonoBehaviour
         if (!AreSlotsEmpty())
         {
             PlantBase plant = ((GameObject)Instantiate(Resources.Load(GameConstants.BASE_PLANT_PREFAB_PATH))).GetComponent<PlantBase>();
-            plant.Initialize(m_FlowerSlot.EnergyType.Value, m_StemSlot.EnergyType.Value, m_BaseSlot.EnergyType.Value);
+            plant.Initialize(m_FlowerSlot.EnergyType.Value, m_StemSlot.EnergyType.Value, m_RootSlot.EnergyType.Value);
             plant.OnInteracted(GameFlow.Instance.CharacterController);
 
             ClearSlots();

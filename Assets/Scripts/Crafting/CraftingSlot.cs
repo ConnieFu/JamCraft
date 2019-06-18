@@ -58,7 +58,7 @@ public class CraftingSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         m_EnergyType = energyType;
 
         m_EnergyTransform = energyObj.transform;
-        m_EnergyTransform.parent = transform;
+        m_EnergyTransform.SetParent(transform);
         m_EnergyTransform.localPosition = Vector3.zero;
     }
 

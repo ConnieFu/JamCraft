@@ -4,6 +4,24 @@ using UnityEngine;
 
 public class PlantComponentBase : MonoBehaviour
 {
+    [SerializeField] private float m_DamageAmount = 1;
+    public float DamageAmount
+    {
+        get
+        {
+            return m_DamageAmount;
+        }
+    }
+
+    [SerializeField] private int m_HealthAmount = 1;
+    public int HealthAmount
+    {
+        get
+        {
+            return m_HealthAmount;
+        }
+    }
+
     private List<SpriteRenderer> m_Renderers = null;
     public void ChangeRenderingLayerInfo(string layerName, int sortingOrder)
     {

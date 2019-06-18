@@ -7,6 +7,7 @@ TagManager:
   - Interactable
   - PickUp
   - PlayerPickUp
+  - Projectile
   layers:
   - Default
   - TransparentFX

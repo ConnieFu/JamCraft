@@ -112,6 +112,8 @@ public class GameFlow : MonoBehaviour
         {
             m_Instance = this;
         }
+
+        Screen.SetResolution(1024, 768, false);
         // show main menu first
         m_Instance.ShowMainMenu();
     }
