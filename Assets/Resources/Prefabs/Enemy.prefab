@@ -97,7 +97,8 @@ MonoBehaviour:
   m_Animator: {fileID: 6762901826386800209}
   m_SpriteRenderer: {fileID: 6762901826386800214}
   m_EnemyEnergyType: 0
-  m_MaxHealth: 30
+  m_MaxHealth: 10
+  m_AttackTime: 3
 --- !u!1 &6762901826386800215
 GameObject:
   m_ObjectHideFlags: 0

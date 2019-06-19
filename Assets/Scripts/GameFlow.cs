@@ -13,7 +13,7 @@ public class GameFlow : MonoBehaviour
     [SerializeField] private Player m_PlayerController;
     [SerializeField] private GridManager m_GridManager;
     [SerializeField] private CraftingManager m_CraftingManager;
-    [SerializeField] private EnemySpawner m_EnemySpawner;
+    [SerializeField] private DayNightCycle m_DayNightCycle;
 
     [SerializeField] private Transform m_FloatingResourcesParent;
 
@@ -108,10 +108,10 @@ public class GameFlow : MonoBehaviour
         Screen.SetResolution(1024, 768, false);
 
         // initialize everything
+        m_DayNightCycle.Initialize();
         m_GridManager.Initialize();
         m_CraftingManager.Initialize();
         m_PlayerController.Initialize();
-        m_EnemySpawner.Initialize();
 
         // show main menu first
         m_Instance.ShowMainMenu();
@@ -125,7 +125,8 @@ public class GameFlow : MonoBehaviour
             m_GridManager.Reset();
             m_CraftingManager.Reset();
             m_PlayerController.Reset();
-            m_EnemySpawner.Reset();
+
+            m_DayNightCycle.Reset();
         }
         m_IsPaused = false;
         m_UIHandler.ToggleMenuUI(false);
@@ -155,6 +156,11 @@ public class GameFlow : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void ToggleNight(bool on)
+    {
+        m_UIHandler.ToggleNight(on);
     }
 
     #region Crafting

@@ -8,11 +8,18 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private GameObject m_GameplayUI;
 
     [SerializeField] private List<GameObject> m_Menus;
-    
+
+    [SerializeField] private GameObject m_NightOverlay;
+
     public void ToggleMenuUI(bool on)
     {
         m_BaseMenuUI.SetActive(on);
         m_GameplayUI.SetActive(!on);
+    }
+
+    public void ToggleNight(bool on)
+    {
+        m_NightOverlay.SetActive(on);
     }
 
     public void ShowMenu(string menuName)

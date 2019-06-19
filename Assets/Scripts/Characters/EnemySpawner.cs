@@ -13,16 +13,16 @@ public class EnemySpawner : MonoBehaviour
    
     private List<Enemy> m_Enemies = new List<Enemy>();
 
-    private void OnGUI()
-    {
-        if (!GameFlow.Instance.IsPaused)
-        {
-            if (GUI.Button(new Rect(new Vector2(0f, 300f), new Vector2(100f, 100f)), "SPAWN ENEMIES"))
-            {
-                SpawnEnemies(2);
-            }
-        }
-    }
+    //private void OnGUI()
+    //{
+    //    if (!GameFlow.Instance.IsPaused)
+    //    {
+    //        if (GUI.Button(new Rect(new Vector2(0f, 300f), new Vector2(100f, 100f)), "SPAWN ENEMIES"))
+    //        {
+    //            SpawnEnemies(2);
+    //        }
+    //    }
+    //}
 
     public void Initialize()
     {
@@ -41,11 +41,12 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void SpawnEnemies(int count)
+    public IEnumerator SpawnEnemies(int count)
     {
         for (int i = 0; i < count; i++)
         {
             SpawnEnemy();
+            yield return new WaitForSeconds(Random.Range(0.0f, 0.8f));
         }
     }
 
