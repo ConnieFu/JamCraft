@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8116227246114716512}
   - component: {fileID: 3029987033959518680}
   m_Layer: 0
-  m_Name: EarthEnergySource
+  m_Name: EARTHEnergySource
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NumberHits: 1
-  m_SpawnAmount: 3
+  m_SpawnAmount: 1
   m_ResourceType: 3
 --- !u!61 &3029987033959518680
 BoxCollider2D:

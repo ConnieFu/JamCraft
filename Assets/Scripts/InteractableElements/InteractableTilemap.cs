@@ -22,6 +22,8 @@ public class InteractableTilemap : MonoBehaviour
         }
     }
 
+    [SerializeField] private RectInt m_ResourceRectangle;
+    [SerializeField] private RectInt m_PlantRectangle;
     private Dictionary<Vector3Int, PlayerInteractableBase> m_InteractableObjects = new Dictionary<Vector3Int, PlayerInteractableBase>();
 
     private Vector3Int m_HomeBaseCell;
@@ -48,6 +50,46 @@ public class InteractableTilemap : MonoBehaviour
         }
     }
 
+    public void ClearResources()
+    {
+        List<ElementResource> resourcesToDelete = new List<ElementResource>();
+        foreach(PlayerInteractableBase interactable in m_InteractableObjects.Values)
+        {
+            ElementResource resource = interactable.GetComponent<ElementResource>();
+            if (resource != null)
+            {
+                resourcesToDelete.Add(resource);
+            }
+        }
+
+        foreach(ElementResource resource in resourcesToDelete)
+        {
+            resource.ClearElementResource();
+        }
+    }
+
+    public bool CanPlacePlant(Vector3Int cell)
+    {
+        if (!IsTileOccupied(cell) &&
+            cell.x <= m_PlantRectangle.width && cell.x >= m_PlantRectangle.x &&
+            cell.y <= m_PlantRectangle.height && cell.y >= m_PlantRectangle.y)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool CanPlaceResource(Vector3Int cell)
+    {
+        if (!IsTileOccupied(cell) &&
+            cell.x <= m_ResourceRectangle.width && cell.x >= m_ResourceRectangle.x &&
+            cell.y <= m_ResourceRectangle.height && cell.y >= m_ResourceRectangle.y)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public bool IsTileOccupied(Vector3Int cell)
     {
         if (m_InteractableObjects.ContainsKey(cell))
@@ -62,6 +104,28 @@ public class InteractableTilemap : MonoBehaviour
         if (m_InteractableObjects.ContainsKey(cell))
         {
             m_InteractableObjects[cell].OnInteracted(controller);
+        }
+    }
+
+    public Vector3Int? GetRandomAvailableCellForResource()
+    {
+        // check if grid full
+        if ((m_ResourceRectangle.width - m_ResourceRectangle.x) * (m_ResourceRectangle.height - m_ResourceRectangle.y) == m_InteractableObjects.Count)
+        {
+            return null;
+        }
+
+        Vector3Int cell = new Vector3Int();
+        cell.x = Random.Range(m_ResourceRectangle.x, m_ResourceRectangle.width + 1);
+        cell.y = Random.Range(m_ResourceRectangle.y, m_ResourceRectangle.height + 1);
+
+        if (CanPlaceResource(cell))
+        {
+            return cell;
+        }
+        else
+        {
+            return GetRandomAvailableCellForResource();
         }
     }
 

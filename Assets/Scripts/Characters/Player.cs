@@ -138,7 +138,7 @@ public class Player : CharacterBase
 
     private void PutPlantDown()
     {
-        if (!GameFlow.Instance.GridManager.InteractableTilemap.IsTileOccupied(m_CurrentTilePos))
+        if (GameFlow.Instance.GridManager.InteractableTilemap.CanPlacePlant(m_CurrentTilePos))
         {
             m_HeldPlant.PlacePlant(m_CurrentTilePos);
             m_HeldPlant = null;

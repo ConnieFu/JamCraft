@@ -9,6 +9,8 @@ public class GameConstants
     public const string GAME_OVER_MENU_SCENE_NAME = "GameOverMenu";
     public const string CRAFTING_MENU_NAME = "CraftingMenu";
 
+    public const string ENERGY_RESOURCE_PATH = "Prefabs/EnergySources/{0}EnergySource";
+
     public const string ENERGY_PREFAB_PATH = "Prefabs/CraftingEnergy/{0}Energy";
     public const string STATIC_ENERGY_PREFAB_PATH = "Prefabs/CraftingEnergy/EnergyStatic/{0}Energy";
 

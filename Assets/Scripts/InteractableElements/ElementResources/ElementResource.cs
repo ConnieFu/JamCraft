@@ -14,12 +14,17 @@ public class ElementResource : PlayerInteractableBase
         if (m_CurrentHits >= m_NumberHits)
         {
             // spawn resources to be picked up
-            SpawnResources();
+            GenerateEnergy();
             DestroySelf();
         }    
     }
 
-    protected virtual void SpawnResources()
+    public void ClearElementResource()
+    {
+        DestroySelf();
+    }
+
+    protected virtual void GenerateEnergy()
     {
         for (int i = 0; i < m_SpawnAmount; i++)
         {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8116227246114716512}
   - component: {fileID: 3029987033959518680}
   m_Layer: 0
-  m_Name: ResourcePrefab
+  m_Name: DEFAULTEnergySource
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -194756753
-  m_SortingLayer: -3
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c008626f5108946299e1a584ba85fa5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -95,7 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NumberHits: 1
-  m_SpawnAmount: 3
+  m_SpawnAmount: 1
+  m_ResourceType: 0
 --- !u!61 &3029987033959518680
 BoxCollider2D:
   m_ObjectHideFlags: 0
