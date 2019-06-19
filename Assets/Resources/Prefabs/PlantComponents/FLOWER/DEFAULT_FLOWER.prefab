@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 529672220194854601}
   - component: {fileID: 2315199623539155930}
   m_Layer: 0
-  m_Name: DEFAULTFlower
+  m_Name: DEFAULT_FLOWER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,4 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d90895e60df64c1b941a160ba557c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DamageAmount: 3
+  m_HealthAmount: 1
+  m_DamageType: 0
+  m_AttackSpeed: 3
   m_AttackStartAnchor: {fileID: 5160894887917821972}

@@ -23,6 +23,9 @@ public class GameConstants
 
     public const float PROJECTILE_SPEED = 0.25f;
     public const float PROJECTILE_HIT_DISTANCE = 0.25f;
+    public const float ENERGY_WEAKNESS_DAMAGE_MODIFIER = 2.0f;
+
+    public static Vector3Int TEMP_NODE_POSITON = new Vector3Int(-1, 4, 0);
 
     public enum eEnergyType
     {
@@ -31,6 +34,23 @@ public class GameConstants
         WATER,
         EARTH,
         AIR
+    }
+
+    public static eEnergyType GetEnergyWeakness(eEnergyType type)
+    {
+        switch(type)
+        {
+            case eEnergyType.FIRE:
+                return eEnergyType.WATER;
+            case eEnergyType.WATER:
+                return eEnergyType.FIRE;
+            case eEnergyType.EARTH:
+                return eEnergyType.AIR;
+            case eEnergyType.AIR:
+                return eEnergyType.EARTH;
+            default:
+                return eEnergyType.DEFAULT;
+        }
     }
 
     public enum eSlot

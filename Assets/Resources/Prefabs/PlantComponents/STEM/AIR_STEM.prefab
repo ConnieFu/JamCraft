@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 3041710866378359038}
   - component: {fileID: 4635958919478682179}
   m_Layer: 0
-  m_Name: DEFAULTStem 2
+  m_Name: AIR_STEM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8904ede311f7f464b96294d66943b23c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DamageAmount: 1
+  m_HealthAmount: 1
+  m_CanAttack: 0
+  m_IsAOE: 1
+  m_AttackRange: 5
   m_FlowerAnchor: {fileID: 6583446439162736859}
 --- !u!1 &8850888101871119648
 GameObject:

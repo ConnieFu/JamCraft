@@ -52,6 +52,7 @@ public class InteractableTilemap : MonoBehaviour
         if (!m_InteractableObjects.ContainsKey(obj.CellXY.Value))
         {
             m_InteractableObjects.Add(obj.CellXY.Value, obj);
+            GameFlow.Instance.GridManager.UpdateNodeAtCell(obj.CellXY.Value);
             return true;
         }
 
@@ -63,6 +64,7 @@ public class InteractableTilemap : MonoBehaviour
         if (m_InteractableObjects.ContainsKey(cell))
         {
             m_InteractableObjects.Remove(cell);
+            GameFlow.Instance.GridManager.UpdateNodeAtCell(cell);
         }
     }
 

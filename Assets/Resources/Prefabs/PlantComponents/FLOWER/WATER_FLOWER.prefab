@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 293570265089957620}
   - component: {fileID: 7046716131090153439}
   m_Layer: 0
-  m_Name: WATERFlower
+  m_Name: WATER_FLOWER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d90895e60df64c1b941a160ba557c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DamageAmount: 4
+  m_HealthAmount: 1
+  m_DamageType: 0
+  m_AttackSpeed: 4
   m_AttackStartAnchor: {fileID: 465249241824459793}
 --- !u!1 &5571474167782858211
 GameObject:

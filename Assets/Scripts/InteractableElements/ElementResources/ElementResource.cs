@@ -9,17 +9,14 @@ public class ElementResource : PlayerInteractableBase
 
     public override void OnInteracted(CharacterBase controller)
     {
-        if (string.Compare(controller.tag, GameConstants.PLAYER_TAG) == 0)
-        {
-            m_CurrentHits++;
+        m_CurrentHits++;
 
-            if (m_CurrentHits >= m_NumberHits)
-            {
-                // spawn resources to be picked up
-                SpawnResources();
-                DestroySelf();
-            }
-        }
+        if (m_CurrentHits >= m_NumberHits)
+        {
+            // spawn resources to be picked up
+            SpawnResources();
+            DestroySelf();
+        }    
     }
 
     protected virtual void SpawnResources()

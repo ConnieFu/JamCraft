@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 6345041094668597842}
   - component: {fileID: 1512749592921779981}
   m_Layer: 0
-  m_Name: DEFAULTBase 2
+  m_Name: EARTH_ROOT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,6 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b2d020abe6841c0b9ac96e31b96047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DamageAmount: 1
+  m_HealthAmount: 1
+  m_DamageModifier: 1
+  m_HealthModifier: 2
+  m_AttackSpeedModifier: 1
   m_StemAnchor: {fileID: 2982886050727021175}
 --- !u!1 &4744071133132654402
 GameObject:

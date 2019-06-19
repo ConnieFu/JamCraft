@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 5239591948401726997}
   - component: {fileID: 1737155019428891898}
   m_Layer: 0
-  m_Name: FIREFlower
+  m_Name: FIRE_FLOWER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,6 +74,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d90895e60df64c1b941a160ba557c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DamageAmount: 2
+  m_HealthAmount: 1
+  m_DamageType: 0
+  m_AttackSpeed: 2
   m_AttackStartAnchor: {fileID: 9197914001811132212}
 --- !u!1 &7142624327180552909
 GameObject:

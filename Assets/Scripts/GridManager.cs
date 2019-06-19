@@ -268,14 +268,26 @@ public class GridManager : MonoBehaviour
         {
             for (int i = 0; i < m_TileMaps.Count; i++)
             {
-                if (ignoreGround && string.Compare(m_TileMaps[i].name, GROUND_TILEMAP_NAME) == 0)
+                switch (m_TileMaps[i].name)
                 {
-                    continue;
-                }
-
-                if (m_TileMaps[i].GetTile(cell) != null)
-                {
-                    return false;
+                    case COLLIDABLE_TILEMAP_NAME:
+                        if (m_TileMaps[i].HasTile(cell))
+                        {
+                            return false;
+                        }
+                        break;
+                    case INTERACTABLE_TILEMAP_NAME:
+                        if (m_InteractableTilemap.IsTileOccupied(cell))
+                        {
+                            return false;
+                        }
+                        break;
+                    case GROUND_TILEMAP_NAME:
+                        if (m_TileMaps[i].HasTile(cell) && !ignoreGround)
+                        {
+                            return false;
+                        }
+                        break;
                 }
             }
         }
