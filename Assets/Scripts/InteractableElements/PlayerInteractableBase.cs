@@ -23,6 +23,11 @@ public abstract class PlayerInteractableBase : MonoBehaviour
         m_CellXY = GameFlow.Instance.GridManager.WorldPosToCell(transform.position);
     }
 
+    public virtual void Reset()
+    {
+        m_CurrentHits = 0;
+    }
+
     protected virtual void DestroySelf()
     {
         GameFlow.Instance.GridManager.InteractableTilemap.RemoveInteractableObject(this);

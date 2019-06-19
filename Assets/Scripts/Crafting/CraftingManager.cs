@@ -35,6 +35,11 @@ public class CraftingManager : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        ClearSlots();
+    }
+
     public void SetSelectedSlot(CraftingSlot slot)
     {
         m_SelectedSlot = slot;

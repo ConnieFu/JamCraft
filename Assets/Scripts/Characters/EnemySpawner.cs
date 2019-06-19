@@ -15,15 +15,38 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnGUI()
     {
-        if (GUI.Button(new Rect(new Vector2(0f,300f), new Vector2(100f, 100f)), "SPAWN ENEMY"))
+        if (!GameFlow.Instance.IsPaused)
         {
-            SpawnEnemy();
+            if (GUI.Button(new Rect(new Vector2(0f, 300f), new Vector2(100f, 100f)), "SPAWN ENEMIES"))
+            {
+                SpawnEnemies(2);
+            }
         }
     }
 
     public void Initialize()
     {
         m_Enemies.AddRange(GetComponentsInChildren<Enemy>());
+        foreach (Enemy enemy in m_Enemies)
+        {
+            enemy.Initialize();
+        }
+    }
+
+    public void Reset()
+    {
+        foreach(Enemy enemy in m_Enemies)
+        {
+            enemy.Reset();
+        }
+    }
+
+    public void SpawnEnemies(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            SpawnEnemy();
+        }
     }
 
     private void SpawnEnemy()
@@ -43,13 +66,14 @@ public class EnemySpawner : MonoBehaviour
             if (!m_Enemies[i].IsAlive)
             {
                 enemy = m_Enemies[i];
-                m_Enemies.Remove(enemy);
             }
         }
 
         if (enemy == null)
         {
             enemy = Instantiate<GameObject>((GameObject)Resources.Load(ENEMY_PREAFAB_PATH), transform).GetComponent<Enemy>();
+            enemy.Initialize();
+            m_Enemies.Add(enemy);
         }
 
         return enemy;

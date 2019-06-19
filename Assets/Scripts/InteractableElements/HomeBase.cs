@@ -12,6 +12,12 @@ public class HomeBase : PlayerInteractableBase
         UpdateText();
     }
 
+    public override void Reset()
+    {
+        base.Reset();
+        UpdateText();
+    }
+
     public override void OnInteracted(CharacterBase controller)
     {
         if (controller.GetComponent<Enemy>() != null)

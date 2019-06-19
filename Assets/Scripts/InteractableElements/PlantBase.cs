@@ -59,6 +59,12 @@ public class PlantBase : PlayerInteractableBase
         CreatePlant();
     }
 
+    public override void Reset()
+    {
+        base.Reset();
+        DestroySelf();
+    }
+
     public void PlacePlant(Vector3Int cell)
     {
         m_IsBeingHeld = false;

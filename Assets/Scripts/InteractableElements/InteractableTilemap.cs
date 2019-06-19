@@ -38,6 +38,16 @@ public class InteractableTilemap : MonoBehaviour
         RefreshInteractableObjects();
     }
 
+    public void Reset()
+    {
+        m_InteractableObjects.Clear();
+        foreach (PlayerInteractableBase interactableObject in transform.GetComponentsInChildren<PlayerInteractableBase>())
+        {
+            interactableObject.Reset();
+            m_InteractableObjects.Add(interactableObject.CellXY.Value, interactableObject);
+        }
+    }
+
     public bool IsTileOccupied(Vector3Int cell)
     {
         if (m_InteractableObjects.ContainsKey(cell))

@@ -21,9 +21,10 @@ public class CharacterBase : MonoBehaviour
         m_CharacterRigidBody = GetComponent<Rigidbody2D>();
     }
 
-    public virtual void ResetCharacter()
+    public virtual void Reset()
     {
         transform.parent.gameObject.SetActive(false);
+
     }
 
     protected virtual void FixedUpdate()

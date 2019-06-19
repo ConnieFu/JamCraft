@@ -43,6 +43,11 @@ public class CraftingSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         m_CraftingSlotRectTrans = GetComponent<RectTransform>();
     }
 
+    public void Reset()
+    {
+        ClearSlot();
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         m_CraftingManager.SetSelectedSlot(this);
@@ -65,6 +70,9 @@ public class CraftingSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void ClearSlot()
     {
         m_EnergyType = null;
-        Destroy(m_EnergyTransform.gameObject);
+        if (m_EnergyTransform != null)
+        {
+            Destroy(m_EnergyTransform.gameObject);
+        }
     }
 }

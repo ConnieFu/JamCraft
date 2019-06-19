@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : CharacterBase
 {
     private const float ENEMY_IN_CENTER_OF_CELL_THRESHOLD = 0.25f;
+    private const float START_ATTACK_TIME = 0.5f;
 
     [Header("")]
     [SerializeField] private GameConstants.eEnergyType m_EnemyEnergyType;
@@ -16,7 +17,7 @@ public class Enemy : CharacterBase
     private Vector3 m_Velocity = Vector3.zero;
     private Vector3Int m_HomeBaseTarget;
 
-    private float m_CurrentAttackTime = 1.0f;
+    private float m_CurrentAttackTime = START_ATTACK_TIME;
     private bool m_IsAttacking = false;
  
     private bool m_IsAlive = false;
@@ -30,6 +31,13 @@ public class Enemy : CharacterBase
 
     private float m_CurrentHealth;
 
+    public override void Reset()
+    {
+        StopMoving();
+        m_IsAlive = false;
+        transform.localPosition = Vector3.zero;
+    }
+
     public void OnSpawned(Vector3Int startCell, Grid grid)
     {
         m_IsAlive = true;
@@ -42,15 +50,12 @@ public class Enemy : CharacterBase
 
         m_HomeBaseTarget = GameFlow.Instance.GridManager.InteractableTilemap.HomeBaseCell;
 
-        Initialize();
+        m_Path = GameFlow.Instance.GridManager.FindPath(m_CurrentTilePos, m_HomeBaseTarget);
     }
 
     protected override void FixedUpdate()
     {
-        if (m_CharacterRigidBody != null)
-        {
-            StopMoving();
-        }
+        StopMoving();
 
         if (!GameFlow.Instance.IsPaused && m_IsAlive)
         {
@@ -67,26 +72,10 @@ public class Enemy : CharacterBase
 
     private void UpdateEnemyMovement()
     {
-        if (m_CurrentTilePos == m_HomeBaseTarget)
+        if (!m_IsAttacking)
         {
-            KillEnemy();
-            GameFlow.Instance.GridManager.InteractableTilemap.CharacterInteraction(m_HomeBaseTarget, this);
-            return;
+            m_Path = GameFlow.Instance.GridManager.FindPath(m_CurrentTilePos, m_HomeBaseTarget);
         }
-
-        m_Path = GameFlow.Instance.GridManager.FindPath(m_CurrentTilePos, m_HomeBaseTarget);
-
-        if (m_IsAttacking)
-        {
-            StopMoving();
-        }
-        else
-        {
-            m_Velocity = (Vector3)m_FacingDirection * m_Speed;
-            m_Animator.SetBool("IsMoving", true);
-        }
-        m_CharacterRigidBody.velocity = m_Velocity;
-
         if ((GameFlow.Instance.GridManager.GetCellWorldPos(m_CurrentTilePos) - transform.position).magnitude <= ENEMY_IN_CENTER_OF_CELL_THRESHOLD)
         {
             m_FacingDirection = m_Path[0] - m_CurrentTilePos;
@@ -116,18 +105,43 @@ public class Enemy : CharacterBase
             {
                 m_IsAttacking = true;
 
-                if (m_CurrentAttackTime <= 0.0f)
-                {
-                    m_CurrentAttackTime = m_AttackTime;
-                    GameFlow.Instance.GridManager.InteractableTilemap.CharacterInteraction(m_Path[0], this);
+                if (!m_IsAttacking)
+                { 
+                    m_CurrentAttackTime = START_ATTACK_TIME;
                 }
-                m_CurrentAttackTime -= Time.deltaTime;
             }
             else
             {
                 m_IsAttacking = false;
             }
         }
+
+        if (m_IsAttacking)
+        {
+            StopMoving();
+            m_Velocity = Vector3.zero;
+
+            m_CurrentAttackTime -= Time.deltaTime;
+            if (m_CurrentAttackTime <= 0.0f)
+            {
+                m_CurrentAttackTime = m_AttackTime;
+                GameFlow.Instance.GridManager.InteractableTilemap.CharacterInteraction(m_Path[0], this);
+                // if it's the home base, get rid of the enemy after one attack
+                if (m_Path[0] == m_HomeBaseTarget)
+                {
+                    OnEnemyTargetReached();
+                    return;
+                }
+                m_Path = GameFlow.Instance.GridManager.FindPath(m_CurrentTilePos, m_HomeBaseTarget);
+            }
+        }
+        else
+        {
+            m_Velocity = (Vector3)m_FacingDirection * m_Speed;
+            m_Animator.SetBool("IsMoving", true);
+        }
+        m_CharacterRigidBody.velocity = m_Velocity;
+
     }
 
     public void TakeDamage(float damage, GameConstants.eEnergyType damageType)
@@ -146,11 +160,12 @@ public class Enemy : CharacterBase
 
     private void KillEnemy()
     {
-        StopMoving();
+        Reset();
+    }
 
-        m_IsAlive = false;
-
-        transform.localPosition = Vector3.zero;
+    private void OnEnemyTargetReached()
+    {
+        Reset();
     }
 
     private void StopMoving()

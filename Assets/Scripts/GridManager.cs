@@ -58,6 +58,11 @@ public class GridManager : MonoBehaviour
         InitializeNodes();
     }
 
+    public void Reset()
+    {
+        m_InteractableTilemap.Reset();
+    }
+
     #region A*Pathfinding
     private void InitializeNodes()
     {
@@ -107,7 +112,7 @@ public class GridManager : MonoBehaviour
                                 node.price = m_InteractableNodePrice;
                                 if (cell == m_InteractableTilemap.HomeBaseCell)
                                 {
-                                    node.price = 1;
+                                    node.price = 0;
                                 }
                                 foundTile = true;
                             }

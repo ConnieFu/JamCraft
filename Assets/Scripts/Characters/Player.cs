@@ -10,6 +10,8 @@ public class Player : CharacterBase
 
     private Vector3 m_Input = Vector3.zero;
 
+    [SerializeField] private Transform m_StartAnchor;
+
     [Header("Controls")]
     [SerializeField] private Transform m_HoldAnchor;
     public PlantBase m_HeldPlant = null;
@@ -25,10 +27,16 @@ public class Player : CharacterBase
     {
         base.Initialize();
 
-        transform.position = Vector3.zero;
-        transform.parent.gameObject.SetActive(true);
-
         m_CharacterPickUp.EnergyManager.Initialize();
+        transform.parent.gameObject.SetActive(false);
+    }
+
+    public override void Reset()
+    {
+        base.Reset();
+
+        transform.position = m_StartAnchor.position;
+        transform.parent.gameObject.SetActive(true);
     }
 
     protected override void FixedUpdate()

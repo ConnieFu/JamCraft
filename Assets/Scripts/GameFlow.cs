@@ -106,19 +106,26 @@ public class GameFlow : MonoBehaviour
         }
 
         Screen.SetResolution(1024, 768, false);
+
+        // initialize everything
+        m_GridManager.Initialize();
+        m_CraftingManager.Initialize();
+        m_PlayerController.Initialize();
+        m_EnemySpawner.Initialize();
+
         // show main menu first
         m_Instance.ShowMainMenu();
     }
 
     public void PlayGame(bool resumed = false)
     {
-        // initialize gameplay elements
+        // reset gameplay elements
         if (!resumed)
         {
-            m_GridManager.Initialize();
-            m_PlayerController.Initialize();
-            m_CraftingManager.Initialize();
-            m_EnemySpawner.Initialize();
+            m_GridManager.Reset();
+            m_CraftingManager.Reset();
+            m_PlayerController.Reset();
+            m_EnemySpawner.Reset();
         }
         m_IsPaused = false;
         m_UIHandler.ToggleMenuUI(false);
