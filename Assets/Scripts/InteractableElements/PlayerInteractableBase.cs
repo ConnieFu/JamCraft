@@ -25,7 +25,7 @@ public abstract class PlayerInteractableBase : MonoBehaviour
 
     protected virtual void DestroySelf()
     {
-        GameFlow.Instance.InteractableTilemap.RemoveInteractableObject(this);
+        GameFlow.Instance.GridManager.InteractableTilemap.RemoveInteractableObject(this);
         Destroy(gameObject);
     }
 

@@ -7,6 +7,8 @@ public class Enemy : CharacterBase
     [Header("")]
     [SerializeField] private GameConstants.eEnergyType m_EnemyEnergyType;
     [SerializeField] private float m_MaxHealth = 30.0f;
+
+    [SerializeField] private List<Vector3Int> m_Path;
  
     private bool m_IsAlive = false;
     public bool IsAlive
@@ -29,16 +31,16 @@ public class Enemy : CharacterBase
         m_FacingDirection = Vector3Int.up;
 
         Initialize();
+
+        m_Path = GameFlow.Instance.GridManager.FindPath(GameFlow.Instance.GridManager.WorldPosToCell(transform.position), new Vector3Int(-1, 4, 0));
     }
 
     protected override void FixedUpdate()
     {
-        base.FixedUpdate();
-
         if (!GameFlow.Instance.IsPaused && m_IsAlive)
         {
-            
-            m_CharacterRigidBody.velocity = GetNextDirectionTowardsNode() * m_Speed;
+            base.FixedUpdate();
+            //m_CharacterRigidBody.velocity = GetNextDirectionTowardsNode() * m_Speed;
         }
     }
 

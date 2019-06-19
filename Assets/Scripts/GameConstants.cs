@@ -39,4 +39,12 @@ public class GameConstants
         STEM,
         ROOT
     }
+
+    public static List<Vector3Int> FOUR_DIRECTIONS = new List<Vector3Int>()
+    {
+        Vector3Int.up,
+        Vector3Int.left,
+        Vector3Int.down,
+        Vector3Int.right
+    };
 }

@@ -67,8 +67,8 @@ public class PlantBase : PlayerInteractableBase
 
         m_CellXY = cell;
 
-        GameFlow.Instance.InteractableTilemap.AddInteractableObject(this);
-        transform.parent = GameFlow.Instance.InteractableTilemap.PlantAnchor;
+        GameFlow.Instance.GridManager.InteractableTilemap.AddInteractableObject(this);
+        transform.parent = GameFlow.Instance.GridManager.InteractableTilemap.PlantAnchor;
         transform.position = GameFlow.Instance.GridManager.GetCellWorldPos(cell);
     }
 

@@ -121,7 +121,7 @@ public class Player : CharacterBase
     {
         if (plant.CellXY.HasValue)
         {
-            GameFlow.Instance.InteractableTilemap.RemoveInteractableObject(plant);
+            GameFlow.Instance.GridManager.InteractableTilemap.RemoveInteractableObject(plant);
         }
         m_HeldPlant = plant;
         plant.transform.parent = m_HoldAnchor;
@@ -130,7 +130,7 @@ public class Player : CharacterBase
 
     private void PutPlantDown()
     {
-        if (!GameFlow.Instance.InteractableTilemap.IsTileOccupied(m_CurrentTilePos))
+        if (!GameFlow.Instance.GridManager.InteractableTilemap.IsTileOccupied(m_CurrentTilePos))
         {
             m_HeldPlant.PlacePlant(m_CurrentTilePos);
             m_HeldPlant = null;

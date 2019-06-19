@@ -12,7 +12,6 @@ public class GameFlow : MonoBehaviour
     [Header("Gameplay Elements")]
     [SerializeField] private Player m_PlayerController;
     [SerializeField] private GridManager m_GridManager;
-    [SerializeField] private InteractableTilemap m_InteractableTilemap;
     [SerializeField] private CraftingManager m_CraftingManager;
     [SerializeField] private EnemySpawner m_EnemySpawner;
 
@@ -47,14 +46,6 @@ public class GameFlow : MonoBehaviour
         get
         {
             return m_GridManager;
-        }
-    }
-
-    public InteractableTilemap InteractableTilemap
-    {
-        get
-        {
-            return m_InteractableTilemap;
         }
     }
 
@@ -126,7 +117,6 @@ public class GameFlow : MonoBehaviour
         {
             m_GridManager.Initialize();
             m_PlayerController.Initialize();
-            m_InteractableTilemap.Initialize();
             m_CraftingManager.Initialize();
             m_EnemySpawner.Initialize();
         }
