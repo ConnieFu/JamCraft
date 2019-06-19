@@ -14,7 +14,7 @@ public class Enemy : CharacterBase
 
     private List<Vector3Int> m_Path = new List<Vector3Int>();
     private Vector3 m_Velocity = Vector3.zero;
-    private Vector3Int m_TargetMoveCell;
+    private Vector3Int m_HomeBaseTarget;
 
     private float m_CurrentAttackTime = 1.0f;
     private bool m_IsAttacking = false;
@@ -40,11 +40,18 @@ public class Enemy : CharacterBase
 
         m_FacingDirection = Vector3Int.up;
 
+        m_HomeBaseTarget = GameFlow.Instance.GridManager.InteractableTilemap.HomeBaseCell;
+
         Initialize();
     }
 
     protected override void FixedUpdate()
     {
+        if (m_CharacterRigidBody != null)
+        {
+            StopMoving();
+        }
+
         if (!GameFlow.Instance.IsPaused && m_IsAlive)
         {
             base.FixedUpdate();
@@ -60,17 +67,18 @@ public class Enemy : CharacterBase
 
     private void UpdateEnemyMovement()
     {
-        if (m_CurrentTilePos == GameConstants.TEMP_NODE_POSITON)
+        if (m_CurrentTilePos == m_HomeBaseTarget)
         {
+            KillEnemy();
+            GameFlow.Instance.GridManager.InteractableTilemap.CharacterInteraction(m_HomeBaseTarget, this);
             return;
         }
 
-        m_Path = GameFlow.Instance.GridManager.FindPath(m_CurrentTilePos, GameConstants.TEMP_NODE_POSITON);
+        m_Path = GameFlow.Instance.GridManager.FindPath(m_CurrentTilePos, m_HomeBaseTarget);
 
         if (m_IsAttacking)
         {
-            m_Animator.SetBool("IsMoving", false);
-            m_Velocity = Vector3.zero;
+            StopMoving();
         }
         else
         {
@@ -138,9 +146,16 @@ public class Enemy : CharacterBase
 
     private void KillEnemy()
     {
-        m_CharacterRigidBody.velocity = Vector3.zero;
-        m_Animator.SetBool("IsMoving", false);
+        StopMoving();
 
         m_IsAlive = false;
+
+        transform.localPosition = Vector3.zero;
+    }
+
+    private void StopMoving()
+    {
+        m_CharacterRigidBody.velocity = Vector3.zero;
+        m_Animator.SetBool("IsMoving", false);
     }
 }

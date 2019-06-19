@@ -24,6 +24,15 @@ public class InteractableTilemap : MonoBehaviour
 
     private Dictionary<Vector3Int, PlayerInteractableBase> m_InteractableObjects = new Dictionary<Vector3Int, PlayerInteractableBase>();
 
+    private Vector3Int m_HomeBaseCell;
+    public Vector3Int HomeBaseCell
+    {
+        get
+        {
+            return m_HomeBaseCell;
+        }
+    }
+
     public void Initialize()
     {
         RefreshInteractableObjects();
@@ -80,6 +89,11 @@ public class InteractableTilemap : MonoBehaviour
         {
             interactableObject.Initialize();
             m_InteractableObjects.Add(interactableObject.CellXY.Value, interactableObject);
+
+            if (interactableObject.GetComponent<HomeBase>() != null)
+            {
+                m_HomeBaseCell = interactableObject.CellXY.Value;
+            }
         }
     }
 }

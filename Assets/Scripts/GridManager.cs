@@ -27,8 +27,8 @@ public class GridManager : MonoBehaviour
     private const string GROUND_TILEMAP_NAME = "Ground";
     private const string INTERACTABLE_TILEMAP_NAME = "Interactable";
     private const string COLLIDABLE_TILEMAP_NAME = "Collidable";
-    private const int INTERACTABLE_NODE_PRICE = 100;
 
+    [SerializeField] private int m_InteractableNodePrice = 50;
     [SerializeField] private RectInt m_GridSize;
     [SerializeField] private InteractableTilemap m_InteractableTilemap;
     public InteractableTilemap InteractableTilemap
@@ -104,7 +104,11 @@ public class GridManager : MonoBehaviour
                             if (m_InteractableTilemap.IsTileOccupied(cell))
                             {
                                 node.isWalkable = true;
-                                node.price = INTERACTABLE_NODE_PRICE;
+                                node.price = m_InteractableNodePrice;
+                                if (cell == m_InteractableTilemap.HomeBaseCell)
+                                {
+                                    node.price = 1;
+                                }
                                 foundTile = true;
                             }
                             break;

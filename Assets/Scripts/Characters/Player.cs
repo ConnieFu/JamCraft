@@ -44,7 +44,7 @@ public class Player : CharacterBase
 
             InteractWithTile();
         }
-        else
+        else if(GameFlow.Instance.IsCrafting)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
