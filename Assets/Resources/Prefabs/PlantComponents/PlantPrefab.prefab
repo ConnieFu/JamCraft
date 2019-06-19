@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NumberHits: 3
-  m_AttackRangeCollider: {fileID: 0}
   m_BaseAnchor: {fileID: 7701895612071525714}
   m_PlantController: {fileID: 659505542228636725}
 --- !u!114 &659505542228636725
@@ -90,7 +89,7 @@ GameObject:
   - component: {fileID: 1298334817030656885}
   - component: {fileID: 8312823237732216562}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

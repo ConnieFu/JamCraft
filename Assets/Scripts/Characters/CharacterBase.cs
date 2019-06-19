@@ -5,9 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class CharacterBase : MonoBehaviour
 {
-    [SerializeField] protected Grid m_Grid;
-    protected List<Tilemap> m_TileMaps = new List<Tilemap>();
-    protected List<TileBase> m_SelectedTiles = new List<TileBase>();
     protected Vector3Int m_CurrentTilePos;
 
     [Header("Movement")]
@@ -21,12 +18,6 @@ public class CharacterBase : MonoBehaviour
 
     public virtual void Initialize()
     {
-        Tilemap[] tilemaps = m_Grid.GetComponentsInChildren<Tilemap>();
-        foreach (Tilemap tilemap in tilemaps)
-        {
-            m_TileMaps.Add(tilemap);
-        }
-
         m_CharacterRigidBody = GetComponent<Rigidbody2D>();
     }
 
@@ -50,17 +41,6 @@ public class CharacterBase : MonoBehaviour
 
     protected virtual void UpdateSelectedTiles()
     {
-        if (m_TileMaps != null && m_TileMaps.Count > 0)
-        {
-            m_SelectedTiles.Clear();
-            m_CurrentTilePos = m_Grid.WorldToCell(transform.position) + m_FacingDirection;
-            for (int i = 0; i < m_TileMaps.Count; i++)
-            {
-                if (m_TileMaps[i].GetTile(m_CurrentTilePos) != null)
-                {
-                    m_SelectedTiles.Add(m_TileMaps[i].GetTile(m_CurrentTilePos));
-                }
-            }
-        }
+        m_CurrentTilePos = GameFlow.Instance.GridManager.WorldPosToCell(transform.position) + m_FacingDirection;
     }
 }

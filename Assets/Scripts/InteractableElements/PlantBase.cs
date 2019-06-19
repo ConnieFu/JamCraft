@@ -30,7 +30,7 @@ public class PlantBase : PlayerInteractableBase
                 m_CellXY = null;
                 m_IsBeingHeld = true;
 
-                ChangeRendererSortingLayers(GameConstants.PLAYER_LAYER_NAME);
+                ChangeRendererSortingLayers(GameConstants.CHARACTER_LAYER_NAME);
             }
         }
         else // it's an enemyyyyyy
@@ -69,7 +69,7 @@ public class PlantBase : PlayerInteractableBase
 
         GameFlow.Instance.InteractableTilemap.AddInteractableObject(this);
         transform.parent = GameFlow.Instance.InteractableTilemap.PlantAnchor;
-        transform.position = GameFlow.Instance.Grid.GetCellCenterWorld(cell);
+        transform.position = GameFlow.Instance.GridManager.GetCellWorldPos(cell);
     }
 
     private void ChangeRendererSortingLayers(string layerName)

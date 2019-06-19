@@ -20,7 +20,7 @@ public abstract class PlayerInteractableBase : MonoBehaviour
     public virtual void Initialize()
     {
         m_CurrentHits = 0;
-        m_CellXY = GameFlow.Instance.Grid.WorldToCell(transform.position);
+        m_CellXY = GameFlow.Instance.GridManager.WorldPosToCell(transform.position);
     }
 
     protected virtual void DestroySelf()

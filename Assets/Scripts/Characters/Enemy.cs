@@ -21,11 +21,10 @@ public class Enemy : CharacterBase
 
     public void OnSpawned(Vector3Int startCell, Grid grid)
     {
-        m_Grid = grid;
         m_IsAlive = true;
         m_CurrentHealth = m_MaxHealth;
 
-        transform.position = m_Grid.CellToWorld(startCell);
+        transform.position = GameFlow.Instance.GridManager.GetCellWorldPos(startCell);
 
         m_FacingDirection = Vector3Int.up;
 

@@ -89,10 +89,10 @@ public class Player : CharacterBase
     // gets list of tiles from tilemaps at the position of the character
     private void SetHighlightedTile()
     {
-        if (m_SelectedTiles.Count > 0)
+        if (!GameFlow.Instance.GridManager.IsCellEmpty(m_CurrentTilePos, false))
         {
             m_TileHighlight.enabled = true;
-            m_CurrentHighlightPos = m_Grid.GetCellCenterWorld(m_CurrentTilePos);
+            m_CurrentHighlightPos = GameFlow.Instance.GridManager.GetCellWorldPos(m_CurrentTilePos);
             m_CurrentHighlightPos.z = HIGHLIGHT_Z_DEPTH;
             m_TileHighlight.transform.position = m_CurrentHighlightPos;
         }

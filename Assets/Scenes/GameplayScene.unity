@@ -9226,6 +9226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1097132838}
   - component: {fileID: 1097132837}
+  - component: {fileID: 1097132839}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -9262,6 +9263,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1097132839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097132836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e11d6ee1ceff04313b645d62d0008041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1278630118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9875,7 +9888,7 @@ MonoBehaviour:
   m_UIHandler: {fileID: 776928030}
   m_Canvas: {fileID: 776928028}
   m_PlayerController: {fileID: 470232093}
-  m_Grid: {fileID: 1097132837}
+  m_GridManager: {fileID: 1097132839}
   m_InteractableTilemap: {fileID: 2142602976}
   m_CraftingManager: {fileID: 1796151699}
   m_EnemySpawner: {fileID: 172249914}

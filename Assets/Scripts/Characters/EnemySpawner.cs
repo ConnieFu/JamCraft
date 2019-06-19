@@ -29,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         // get random point in spawning area
-        Vector3Int spawnCell = new Vector3Int(m_SpawningArea.x + Random.Range(0, m_SpawningArea.width), m_SpawningArea.y + Random.Range(0, m_SpawningArea.height), 0);
+        Vector3Int spawnCell = GameFlow.Instance.GridManager.GetRandomCell(m_SpawningArea);
 
         GetAvailableEnemy().OnSpawned(spawnCell, m_Grid);
     }
