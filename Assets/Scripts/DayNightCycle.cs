@@ -86,7 +86,7 @@ public class DayNightCycle : MonoBehaviour
         m_EnemySpawnTimer -= Time.deltaTime;
         if (m_EnemySpawnTimer <= 0.0f)
         {
-            int numberEnemiesToSpawn = Random.Range(m_MinEnemiesToSpawn.x, m_MinEnemiesToSpawn.y + 1) * (m_NumberNights + 1);
+            int numberEnemiesToSpawn = (Random.Range(m_MinEnemiesToSpawn.x, m_MinEnemiesToSpawn.y + 1) + (m_NumberNights)) / 2;
 
             StartCoroutine(m_EnemySpawner.SpawnEnemies(numberEnemiesToSpawn));
            

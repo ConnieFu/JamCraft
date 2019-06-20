@@ -24,6 +24,11 @@ public class Projectile : MonoBehaviour
         if (!GameFlow.Instance.IsPaused && m_IsInitialized)
         {
             // update projectile position towards target
+            if (!m_Target.IsAlive)
+            {
+                m_IsInitialized = false;
+                ProjectilePool.Instance.ReturnProjectile(this);
+            }
             Vector3 direction = (m_Target.transform.position - transform.position);
             if (direction.magnitude <= GameConstants.PROJECTILE_HIT_DISTANCE)
             {
