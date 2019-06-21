@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8943263658903260506}
   - component: {fileID: 3525362025143523333}
   m_Layer: 0
-  m_Name: DEFAULTBase 3
+  m_Name: WATER_ROOT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2140490606421744707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0.03, z: -54.865932}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2705205975899565540}
@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b2d020abe6841c0b9ac96e31b96047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DamageAmount: 1
+  m_HealthAmount: 1
+  m_DamageModifier: 1
+  m_HealthModifier: 1
+  m_AttackSpeedModifier: 1
   m_StemAnchor: {fileID: 970403292299509119}
 --- !u!1 &3242067081733677188
 GameObject:
@@ -70,7 +75,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3242067081733677188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.11, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8943263658903260506}
@@ -101,8 +106,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7333148990418088010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.24, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8943263658903260506}
   m_RootOrder: 0
@@ -145,8 +150,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dbc624f7b3a644dcf989e434e63d9a98, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.91027117, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 860ad1743ab7844e8889977f89e9d194, type: 3}
+  m_Color: {r: 0, g: 0.66598415, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

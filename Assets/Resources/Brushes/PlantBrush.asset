@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlantBrush
   m_EditorClassIdentifier: 
   m_Prefabs:
-  - {fileID: 3517933269674779675, guid: 1d82de5a3141843898b26fcaecea6c41, type: 3}
+  - {fileID: 7019957440551496196, guid: e6474da1edaad4cf88b7fe90dbeed00d, type: 3}
   m_PerlinScale: 0.5
   m_Z: 0

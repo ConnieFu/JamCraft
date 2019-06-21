@@ -80,9 +80,9 @@ public class PlantBase : PlayerInteractableBase
 
     private void ChangeRendererSortingLayers(string layerName)
     {
-        m_FlowerComponent.ChangeRenderingLayerInfo(layerName, 2);
-        m_StemComponent.ChangeRenderingLayerInfo(layerName, 1);
-        m_RootComponent.ChangeRenderingLayerInfo(layerName, 0);
+        m_FlowerComponent.ChangeRenderingLayerInfo(layerName);
+        m_StemComponent.ChangeRenderingLayerInfo(layerName);
+        m_RootComponent.ChangeRenderingLayerInfo(layerName);
     }
 
     private void CreatePlant()

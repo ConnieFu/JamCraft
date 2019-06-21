@@ -24,13 +24,15 @@ public class PlantController : MonoBehaviour
     private List<Enemy> m_NearbyEnemies = new List<Enemy>();
     private Enemy m_ClosestEnemy = null;
 
+    private float m_StartAttackTime;
     private float m_AttackTimer = 0.0f;
 
     public void SetPlantInfo(sPlantData info, PlantBase plantBase)
     {
         m_PlantInfo = info;
 
-        m_AttackTimer = m_PlantInfo.attackSpeed;
+        m_StartAttackTime = 5f / m_PlantInfo.attackSpeed;
+        m_AttackTimer = m_StartAttackTime;
         GetComponent<CircleCollider2D>().radius = m_PlantInfo.attackRange;
 
         m_PlantBase = plantBase;
@@ -57,7 +59,7 @@ public class PlantController : MonoBehaviour
                     AttackNearestEnemy();
                 }
                 
-                m_AttackTimer = m_PlantInfo.attackSpeed;
+                m_AttackTimer = m_StartAttackTime;
             }
         }
     }
@@ -96,16 +98,8 @@ public class PlantController : MonoBehaviour
             }
         }
 
-        if (m_ClosestEnemy != null)
-        {
-            // shoot projectile or whatever at target (follows target)
-            // target handles collision of projectile
-            Projectile projectile = ProjectilePool.Instance.GetAvailableProjectile();
-            projectile.transform.position = m_PlantInfo.attackPosition.position;
-            projectile.InitializeProjectile(m_ClosestEnemy, m_PlantInfo.damageAmt, m_PlantInfo.damageType);
-
-            m_ClosestEnemy = null;
-        }
+        ShootProjectileAtEnemy(m_ClosestEnemy);
+        m_ClosestEnemy = null;
     }
 
     private void AttackNearbyEnemies()
@@ -113,8 +107,23 @@ public class PlantController : MonoBehaviour
         // AOE DAMAGE HELL YEAH
         foreach(Enemy enemy in m_NearbyEnemies)
         {
-            // deal damage to the enemy
-            enemy.TakeDamage(m_PlantInfo.damageAmt, m_PlantInfo.damageType);
+            if (enemy.IsAlive)
+            {
+                // deal damage to the enemy
+                ShootProjectileAtEnemy(enemy);
+            }  
+        }
+    }
+
+    private void ShootProjectileAtEnemy(Enemy enemy)
+    {
+        if (enemy != null && enemy.IsAlive)
+        {
+            // shoot projectile or whatever at target (follows target)
+            // target handles collision of projectile
+            Projectile projectile = ProjectilePool.Instance.GetAvailableProjectile();
+            projectile.transform.position = m_PlantInfo.attackPosition.position;
+            projectile.InitializeProjectile(enemy, m_PlantInfo.damageAmt, m_PlantInfo.damageType);
         }
     }
 }

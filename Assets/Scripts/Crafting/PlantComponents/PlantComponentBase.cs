@@ -23,7 +23,7 @@ public class PlantComponentBase : MonoBehaviour
     }
 
     private List<SpriteRenderer> m_Renderers = null;
-    public void ChangeRenderingLayerInfo(string layerName, int sortingOrder)
+    public void ChangeRenderingLayerInfo(string layerName)
     {
         if (m_Renderers == null)
         {
@@ -34,7 +34,6 @@ public class PlantComponentBase : MonoBehaviour
         for (int i = 0; i < m_Renderers.Count; i++)
         {
             m_Renderers[i].sortingLayerName = layerName;
-            m_Renderers[i].sortingOrder = sortingOrder;
         }
     }
 }
