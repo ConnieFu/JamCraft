@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ResourceBrush
   m_EditorClassIdentifier: 
   m_Prefabs:
-  - {fileID: 2542053544870273093, guid: 28f7b9a7bfecb499bb8ff8deeea9e262, type: 3}
+  - {fileID: 7383184590160750095, guid: 5f35c565f88f64bd0bfd89fcb114d74a, type: 3}
   m_PerlinScale: 0.5
   m_Z: 0

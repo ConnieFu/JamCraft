@@ -305,7 +305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &545787837855072013
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1586,6 +1586,7 @@ MonoBehaviour:
   - {fileID: 1978074777474579050}
   - {fileID: 1978074778687676658}
   - {fileID: 1978074778791087714}
+  m_NightOverlay: {fileID: 910170280132377315}
 --- !u!1 &1978074777889380803
 GameObject:
   m_ObjectHideFlags: 0
@@ -2806,7 +2807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1978074778827231406
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3410,7 +3411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3814,11 +3815,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1978074777460673144}
     m_Modifications:
-    - target: {fileID: 1220973638377304039, guid: 2121f8f4a636944889fa2251df045f51,
-        type: 3}
-      propertyPath: m_Name
-      value: AirEnergySlot
-      objectReference: {fileID: 0}
     - target: {fileID: 1220973638377304036, guid: 2121f8f4a636944889fa2251df045f51,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3934,16 +3930,52 @@ PrefabInstance:
       propertyPath: m_CanvasGroup
       value: 
       objectReference: {fileID: 363675686}
-    - target: {fileID: 1220973639508432388, guid: 2121f8f4a636944889fa2251df045f51,
+    - target: {fileID: 1220973638377304039, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Name
+      value: AirEnergySlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
         type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178002, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432391, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432391, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 61.71875
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432391, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50.78125
       objectReference: {fileID: 0}
     - target: {fileID: 1220973639508432388, guid: 2121f8f4a636944889fa2251df045f51,
         type: 3}
-      propertyPath: m_Color.b
-      value: 0.9561806
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a693eddce667a4b16ac7f9cde6dc7796,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2121f8f4a636944889fa2251df045f51, type: 3}
 --- !u!224 &1393270295186682341 stripped
@@ -3977,11 +4009,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1978074777460673144}
     m_Modifications:
-    - target: {fileID: 1220973638377304039, guid: 2121f8f4a636944889fa2251df045f51,
-        type: 3}
-      propertyPath: m_Name
-      value: DefaultEnergySlot
-      objectReference: {fileID: 0}
     - target: {fileID: 1220973638377304036, guid: 2121f8f4a636944889fa2251df045f51,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4092,6 +4119,47 @@ PrefabInstance:
       propertyPath: m_CanvasGroup
       value: 
       objectReference: {fileID: 682392592}
+    - target: {fileID: 1220973638377304039, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Name
+      value: DefaultEnergySlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178002, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432391, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 53.90625
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432391, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60.15625
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432388, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2640c596d48394b71a092cbaf2311887,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2121f8f4a636944889fa2251df045f51, type: 3}
 --- !u!114 &3962078391519083764 stripped
@@ -4125,11 +4193,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1978074777460673144}
     m_Modifications:
-    - target: {fileID: 1220973638377304039, guid: 2121f8f4a636944889fa2251df045f51,
-        type: 3}
-      propertyPath: m_Name
-      value: WaterEnergySlot
-      objectReference: {fileID: 0}
     - target: {fileID: 1220973638377304036, guid: 2121f8f4a636944889fa2251df045f51,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4245,11 +4308,52 @@ PrefabInstance:
       propertyPath: m_CanvasGroup
       value: 
       objectReference: {fileID: 500392625}
-    - target: {fileID: 1220973639508432388, guid: 2121f8f4a636944889fa2251df045f51,
+    - target: {fileID: 1220973638377304039, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Name
+      value: WaterEnergySlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
         type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178002, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432391, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432391, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50.78125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432391, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 57.8125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432388, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7571c28e5e4bb499094062324074cafc,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2121f8f4a636944889fa2251df045f51, type: 3}
 --- !u!114 &2511051614911350993 stripped
@@ -4283,11 +4387,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1978074777460673144}
     m_Modifications:
-    - target: {fileID: 1220973638377304039, guid: 2121f8f4a636944889fa2251df045f51,
-        type: 3}
-      propertyPath: m_Name
-      value: FireEnergySlot
-      objectReference: {fileID: 0}
     - target: {fileID: 1220973638377304036, guid: 2121f8f4a636944889fa2251df045f51,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4403,16 +4502,47 @@ PrefabInstance:
       propertyPath: m_CanvasGroup
       value: 
       objectReference: {fileID: 1570940010}
-    - target: {fileID: 1220973639508432388, guid: 2121f8f4a636944889fa2251df045f51,
+    - target: {fileID: 1220973638377304039, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Name
+      value: FireEnergySlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
         type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178002, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432391, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 51.5625
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432391, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 55.46875
       objectReference: {fileID: 0}
     - target: {fileID: 1220973639508432388, guid: 2121f8f4a636944889fa2251df045f51,
         type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d6f37ff25bbc54cd99bc1880403c8d99,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2121f8f4a636944889fa2251df045f51, type: 3}
 --- !u!114 &3413374245052781943 stripped
@@ -4446,11 +4576,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1978074777460673144}
     m_Modifications:
-    - target: {fileID: 1220973638377304039, guid: 2121f8f4a636944889fa2251df045f51,
-        type: 3}
-      propertyPath: m_Name
-      value: EarthEnergySlot
-      objectReference: {fileID: 0}
     - target: {fileID: 1220973638377304036, guid: 2121f8f4a636944889fa2251df045f51,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4566,16 +4691,57 @@ PrefabInstance:
       propertyPath: m_CanvasGroup
       value: 
       objectReference: {fileID: 91384410}
-    - target: {fileID: 1220973639508432388, guid: 2121f8f4a636944889fa2251df045f51,
+    - target: {fileID: 1220973638377304039, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Name
+      value: EarthEnergySlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.8759048
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178003, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973638184178002, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432391, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432391, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432391, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 69.53125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220973639508432391, guid: 2121f8f4a636944889fa2251df045f51,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 62.5
       objectReference: {fileID: 0}
     - target: {fileID: 1220973639508432388, guid: 2121f8f4a636944889fa2251df045f51,
         type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 94567f0a68362437d8f9bd42653d3332,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2121f8f4a636944889fa2251df045f51, type: 3}
 --- !u!224 &4716671737687333359 stripped

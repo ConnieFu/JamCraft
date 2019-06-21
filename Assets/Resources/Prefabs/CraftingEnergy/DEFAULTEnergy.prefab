@@ -69,7 +69,7 @@ SpriteRenderer:
   m_SortingLayerID: -825459583
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 2640c596d48394b71a092cbaf2311887, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 262588332717119196}
   - component: {fileID: 6487587505254609306}
   m_Layer: 0
-  m_Name: DefaultEnergy
+  m_Name: DEFAULTEnergy
   m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ Transform:
   m_GameObject: {fileID: 7015700894310103137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.69, y: -3.2, z: -605.3629}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8436472781905935247}
   m_Father: {fileID: 0}
@@ -151,6 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7832cd21f65eb49018a311ab50f3726d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ResourceType: 0
+  m_EnergyType: 0
   m_SpawnXRange: {x: -2, y: 2}
   m_SpawnYRange: {x: -1, y: 1}
