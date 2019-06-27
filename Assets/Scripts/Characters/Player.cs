@@ -27,7 +27,7 @@ public class Player : CharacterBase
     {
         base.Initialize();
 
-        m_CharacterPickUp.EnergyManager.Initialize();
+        m_CharacterPickUp.Initialize();
         transform.parent.gameObject.SetActive(false);
     }
 

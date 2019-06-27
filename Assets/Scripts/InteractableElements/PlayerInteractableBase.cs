@@ -9,6 +9,8 @@ public abstract class PlayerInteractableBase : MonoBehaviour
     [SerializeField] protected int m_NumberHits = 1;
     protected int m_CurrentHits = 0;
 
+    protected Animator m_Animator;
+
     public Vector3Int? CellXY
     {
         get
@@ -21,6 +23,7 @@ public abstract class PlayerInteractableBase : MonoBehaviour
     {
         m_CurrentHits = 0;
         m_CellXY = GameFlow.Instance.GridManager.WorldPosToCell(transform.position);
+        m_Animator = GetComponentInChildren<Animator>();
     }
 
     public virtual void Reset()

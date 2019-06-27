@@ -13,6 +13,12 @@ public class Energy : MonoBehaviour
     [SerializeField] protected Vector2 m_SpawnXRange;
     [SerializeField] protected Vector2 m_SpawnYRange;
 
+    [Header("Animations")]
+    [SerializeField] protected Animator m_EnergyAnimation;
+    [SerializeField] protected string m_EnergyAnimName;
+    [SerializeField] protected Animator m_ShadowAnimation;
+    [SerializeField] protected string m_ShadowAnimName;
+
     protected Vector3 m_DistanceFromPlayer;
 
     protected bool m_IsSpawning = false;
@@ -22,12 +28,20 @@ public class Energy : MonoBehaviour
         // TEMP: set position to random position around origin
         transform.position = new Vector3(   Random.Range(transform.position.x + m_SpawnXRange.x, transform.position.x + m_SpawnXRange.y),
                                             Random.Range(transform.position.y + m_SpawnYRange.x, transform.position.y + m_SpawnYRange.y),
-                                            transform.position.z); 
+                                            transform.position.z);
+
+        PlayIdleAnimation();
     }
 
     void Start()
     {
         Spawn();
+    }
+
+    protected virtual void PlayIdleAnimation()
+    {
+        m_EnergyAnimation.Play(m_EnergyAnimName);
+        m_ShadowAnimation.Play(m_ShadowAnimName);
     }
 
     protected virtual void OnTriggerStay2D(Collider2D collision)

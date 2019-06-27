@@ -5,7 +5,12 @@ using UnityEngine;
 public class ProjectilePool : MonoBehaviour
 {
     private const string PROJECTILE_PREFAB_PATH = "Prefabs/Projectiles/Projectile";
+    private const string HIT_PARTICLES_PREFAB_PATH = "Prefabs/Projectiles/HitEnemyParticles";
+
     private List<Projectile> m_AvailableProjectiles = new List<Projectile>();
+
+    [SerializeField] private Transform m_ParticlesAnchor;
+    private List<ParticleSystem> m_ParticlesPool = new List<ParticleSystem>();
 
     private static ProjectilePool m_Instance;
     public static ProjectilePool Instance
@@ -28,6 +33,7 @@ public class ProjectilePool : MonoBehaviour
         }
 
         m_AvailableProjectiles.AddRange(GetComponentsInChildren<Projectile>());
+        m_ParticlesPool.AddRange(m_ParticlesAnchor.GetComponentsInChildren<ParticleSystem>());
     }
 
     public Projectile GetAvailableProjectile()
@@ -55,5 +61,26 @@ public class ProjectilePool : MonoBehaviour
             m_AvailableProjectiles.Add(projectile);
             projectile.transform.localPosition = Vector3.zero;
         }
+    }
+
+    public void OnProjectileHitTarget(Transform hitPos)
+    {
+        ParticleSystem hitParticles = null;
+        foreach(ParticleSystem particle in m_ParticlesPool)
+        {
+            if (!particle.IsAlive())
+            {
+                hitParticles = particle;
+            }
+        }
+
+        if (hitParticles == null)
+        {
+            hitParticles = Instantiate<GameObject>((GameObject)Resources.Load(HIT_PARTICLES_PREFAB_PATH), m_ParticlesAnchor).GetComponent<ParticleSystem>();
+            m_ParticlesPool.Add(hitParticles);
+        }
+
+        hitParticles.transform.position = hitPos.position;
+        hitParticles.Play();
     }
 }

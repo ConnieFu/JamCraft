@@ -20,7 +20,6 @@ public class PlantController : MonoBehaviour
     private sPlantData m_PlantInfo;
 
     private Enemy m_EnteringEnemy = null;
-    private Enemy m_ExitingEnemy = null;
     private List<Enemy> m_NearbyEnemies = new List<Enemy>();
     private Enemy m_ClosestEnemy = null;
 
@@ -47,6 +46,7 @@ public class PlantController : MonoBehaviour
 
         if (!m_PlantBase.IsBeingHeld)
         {
+            m_PlantBase.FlowerComponent.transform.localScale = Vector3.one * (m_StartAttackTime - m_AttackTimer) / m_StartAttackTime;
             m_AttackTimer -= Time.deltaTime;
             if (m_AttackTimer <= 0.0f)
             {
@@ -70,18 +70,14 @@ public class PlantController : MonoBehaviour
         if (m_EnteringEnemy != null)
         {
             m_NearbyEnemies.Add(m_EnteringEnemy);
+            m_EnteringEnemy.m_OnDeath = RemoveEnemy;
             m_EnteringEnemy = null;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        m_ExitingEnemy = collision.GetComponent<Enemy>();
-        if (m_ExitingEnemy != null && m_NearbyEnemies.Contains(m_ExitingEnemy))
-        {
-            m_NearbyEnemies.Remove(m_ExitingEnemy);
-            m_ExitingEnemy = null;
-        }
+        RemoveEnemy(collision.GetComponent<Enemy>());
     }
 
     private void AttackNearestEnemy()
@@ -119,11 +115,22 @@ public class PlantController : MonoBehaviour
     {
         if (enemy != null && enemy.IsAlive)
         {
+            // for now, used iTween to handle shoot animation
+
+
             // shoot projectile or whatever at target (follows target)
             // target handles collision of projectile
             Projectile projectile = ProjectilePool.Instance.GetAvailableProjectile();
             projectile.transform.position = m_PlantInfo.attackPosition.position;
-            projectile.InitializeProjectile(enemy, m_PlantInfo.damageAmt, m_PlantInfo.damageType);
+            projectile.InitializeProjectile(enemy, m_PlantInfo.damageAmt, m_PlantInfo.damageType, ProjectilePool.Instance.OnProjectileHitTarget);
+        }
+    }
+
+    private void RemoveEnemy(Enemy enemy)
+    {
+        if (enemy != null && m_NearbyEnemies.Contains(enemy))
+        {
+            m_NearbyEnemies.Remove(enemy);
         }
     }
 }

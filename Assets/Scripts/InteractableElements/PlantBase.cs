@@ -8,6 +8,14 @@ public class PlantBase : PlayerInteractableBase
     [SerializeField] private PlantController m_PlantController;
 
     private FlowerComponent m_FlowerComponent;
+    public FlowerComponent FlowerComponent
+    {
+        get
+        {
+            return m_FlowerComponent;
+        }
+    }
+
     private StemComponent m_StemComponent;
     private RootComponent m_RootComponent;
 

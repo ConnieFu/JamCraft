@@ -19,7 +19,7 @@ public class Enemy : CharacterBase
 
     private float m_CurrentAttackTime = START_ATTACK_TIME;
     private bool m_IsAttacking = false;
- 
+
     private bool m_IsAlive = false;
     public bool IsAlive
     {
@@ -31,9 +31,13 @@ public class Enemy : CharacterBase
 
     private float m_CurrentHealth;
 
+    public delegate void OnEnemyDeath(Enemy enemy);
+    public OnEnemyDeath m_OnDeath = null;
+
     public override void Reset()
     {
         StopMoving();
+        m_OnDeath = null;
         m_IsAlive = false;
         transform.localPosition = Vector3.zero;
     }
@@ -106,7 +110,7 @@ public class Enemy : CharacterBase
                 m_IsAttacking = true;
 
                 if (!m_IsAttacking)
-                { 
+                {
                     m_CurrentAttackTime = START_ATTACK_TIME;
                 }
             }
@@ -160,6 +164,10 @@ public class Enemy : CharacterBase
 
     private void KillEnemy()
     {
+        if (m_OnDeath != null)
+        {
+            m_OnDeath(this);
+        }
         Reset();
     }
 

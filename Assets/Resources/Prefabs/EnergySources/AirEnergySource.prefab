@@ -207,7 +207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9f88160821d4e969e88000ad6ae02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NumberHits: 1
+  m_NumberHits: 3
+  m_HitAnimationName: 
   m_SpawnAmount: 1
   m_ResourceType: 4
 --- !u!61 &1096627955553930582
@@ -261,8 +262,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7347182065547685810}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.021, y: 0.162, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.021, y: 0.151, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 6608490250733020650}
   m_RootOrder: 1
