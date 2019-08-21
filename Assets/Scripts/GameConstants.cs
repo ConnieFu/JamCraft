@@ -67,4 +67,9 @@ public class GameConstants
         Vector3Int.down,
         Vector3Int.right
     };
+
+    public enum eLayers
+    {
+        TOUCHABLE = 8
+    }
 }
