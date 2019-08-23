@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerInteractableBase : MonoBehaviour
+public abstract class PlayerInteractableBase : MonoBehaviour, ITouchable
 {
     protected Vector3Int? m_CellXY;
 
@@ -31,11 +31,30 @@ public abstract class PlayerInteractableBase : MonoBehaviour
         m_CurrentHits = 0;
     }
 
+    public virtual void OnEnemyHit()
+    {
+
+    }
+
     protected virtual void DestroySelf()
     {
         GameFlow.Instance.GridManager.InteractableTilemap.RemoveInteractableObject(this);
         Destroy(gameObject);
     }
 
-    public abstract void OnInteracted(CharacterBase controller);
+    public virtual void OnTouchBegin()
+    {
+    }
+
+    public virtual void OnTouchTapped()
+    {
+    }
+
+    public virtual void OnTouchHold(Vector2 position)
+    {
+    }
+
+    public virtual void OnTouchEnd()
+    {
+    }
 }

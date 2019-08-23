@@ -129,7 +129,7 @@ public class Enemy : CharacterBase
             if (m_CurrentAttackTime <= 0.0f)
             {
                 m_CurrentAttackTime = m_AttackTime;
-                GameFlow.Instance.GridManager.InteractableTilemap.CharacterInteraction(m_Path[0], this);
+                GameFlow.Instance.GridManager.InteractableTilemap.EnemyInteraction(m_Path[0]);
                 // if it's the home base, get rid of the enemy after one attack
                 if (m_Path[0] == m_HomeBaseTarget)
                 {

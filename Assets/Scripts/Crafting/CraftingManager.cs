@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: when plant crafted, leave it somewhere for the player to pick up and use 
 public class CraftingManager : MonoBehaviour
 {
     [SerializeField] private List<CraftingSlot> m_CraftingSlots;
@@ -70,7 +71,6 @@ public class CraftingManager : MonoBehaviour
         {
             PlantBase plant = ((GameObject)Instantiate(Resources.Load(GameConstants.BASE_PLANT_PREFAB_PATH))).GetComponent<PlantBase>();
             plant.Initialize(m_FlowerSlot.EnergyType.Value, m_StemSlot.EnergyType.Value, m_RootSlot.EnergyType.Value);
-            plant.OnInteracted(GameFlow.Instance.PlayerController);
 
             ClearSlots();
             GameFlow.Instance.HideCraftingMenu();

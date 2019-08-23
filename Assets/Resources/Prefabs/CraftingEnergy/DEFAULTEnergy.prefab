@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 7015700894310103143}
   - component: {fileID: 262588332717119196}
   - component: {fileID: 6487587505254609306}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DEFAULTEnergy
   m_TagString: PickUp
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -258,7 +258,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &6487587505254609306
 MonoBehaviour:

@@ -10,10 +10,10 @@ public class GameFlow : MonoBehaviour
     [SerializeField] private Canvas m_Canvas;
 
     [Header("Gameplay Elements")]
-    [SerializeField] private Player m_PlayerController;
     [SerializeField] private GridManager m_GridManager;
     [SerializeField] private CraftingManager m_CraftingManager;
     [SerializeField] private DayNightCycle m_DayNightCycle;
+    [SerializeField] private EnergyManager m_EnergyManager;
 
     [SerializeField] private Transform m_FloatingResourcesParent;
 
@@ -46,6 +46,14 @@ public class GameFlow : MonoBehaviour
         get
         {
             return m_GridManager;
+        }
+    }
+
+    public EnergyManager EnergyManager
+    {
+        get
+        {
+            return m_EnergyManager;
         }
     }
 
@@ -84,14 +92,6 @@ public class GameFlow : MonoBehaviour
             m_CraftingMenuClosed = value;
         }
     }
-
-    public Player PlayerController
-    {
-        get
-        {
-            return m_PlayerController;
-        }
-    }
     #endregion
 
     void Awake()
@@ -111,8 +111,7 @@ public class GameFlow : MonoBehaviour
         m_DayNightCycle.Initialize();
         m_GridManager.Initialize();
         m_CraftingManager.Initialize();
-        m_PlayerController.Initialize();
-
+  
         // show main menu first
         m_Instance.ShowMainMenu();
     }
@@ -124,7 +123,6 @@ public class GameFlow : MonoBehaviour
         {
             m_GridManager.Reset();
             m_CraftingManager.Reset();
-            m_PlayerController.Reset();
 
             m_DayNightCycle.Reset();
         }

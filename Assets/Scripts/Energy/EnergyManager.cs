@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// turn this into a singleton probably
 public class EnergyManager : MonoBehaviour
 {
     [SerializeField] private List<EnergyUISlot> m_EnergyUISlots;

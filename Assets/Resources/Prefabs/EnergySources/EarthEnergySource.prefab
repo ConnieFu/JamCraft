@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6608490250733020650}
   - component: {fileID: 8116227246114716512}
   - component: {fileID: 1968461928101869593}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EarthEnergySource
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NumberHits: 3
-  m_HitAnimationName: 
   m_SpawnAmount: 1
   m_ResourceType: 3
 --- !u!61 &1968461928101869593

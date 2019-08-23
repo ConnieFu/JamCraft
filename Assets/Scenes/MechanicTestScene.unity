@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e402d77f779468c85a0bd9dec86417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 896526135884545604, guid: 70dfe2f731567402d8cdfbfa246aa18a, type: 3}
 --- !u!4 &267312440
 Transform:
   m_ObjectHideFlags: 0
@@ -400,5 +399,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 1464419694}
   m_HoldColor: {r: 0, g: 0, b: 0, a: 1}
-  m_TouchSize: 2
+  m_TouchSize: 0
   m_StartColor: {r: 0, g: 0, b: 0, a: 0}

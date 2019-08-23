@@ -34,11 +34,16 @@ public class TestTouching : MonoBehaviour, ITouchable
 
     public void OnTouchBegin()
     {
+
+    }
+
+    public void OnTouchTapped()
+    {
         Hashtable hash = new Hashtable();
         hash.Add("amount", Vector3.one * m_TouchSize);
-        hash.Add("time", 1.0f);
+        hash.Add("time", 0.1f);
         iTween.PunchScale(m_Sprite.gameObject, hash);
-        Debug.LogError("I TOUCHED THE FIRE");
+        Debug.LogError("I TAPPED THE FIRE");
     }
 
     public void OnTouchHold(Vector2 position)

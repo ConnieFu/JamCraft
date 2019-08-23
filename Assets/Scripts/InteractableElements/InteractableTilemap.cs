@@ -99,11 +99,11 @@ public class InteractableTilemap : MonoBehaviour
         return false;
     }
 
-    public void CharacterInteraction(Vector3Int cell, CharacterBase controller)
+    public void EnemyInteraction(Vector3Int cell)
     {
         if (m_InteractableObjects.ContainsKey(cell))
         {
-            m_InteractableObjects[cell].OnInteracted(controller);
+            m_InteractableObjects[cell].OnEnemyHit();
         }
     }
 

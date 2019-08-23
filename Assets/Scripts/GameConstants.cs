@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameConstants
 {
+    // Touch Controls
+    public const float TAP_TIME = 0.15f;
+
     public const string MAIN_MENU_SCENE_NAME = "MainMenu";
     public const string PAUSE_MENU_SCENE_NAME = "PauseMenu";
     public const string GAME_OVER_MENU_SCENE_NAME = "GameOverMenu";

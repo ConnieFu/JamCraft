@@ -18,18 +18,15 @@ public class HomeBase : PlayerInteractableBase
         UpdateText();
     }
 
-    public override void OnInteracted(CharacterBase controller)
+    public override void OnEnemyHit()
     {
-        if (controller.GetComponent<Enemy>() != null)
-        {
-            m_CurrentHits++;
-            UpdateText();
+        m_CurrentHits++;
+        UpdateText();
 
-            if (m_CurrentHits >= m_NumberHits)
-            {
-                // GAME OVER
-                GameFlow.Instance.ShowGameOver();
-            }
+        if (m_CurrentHits >= m_NumberHits)
+        {
+            // GAME OVER
+            GameFlow.Instance.ShowGameOver();
         }
     }
 

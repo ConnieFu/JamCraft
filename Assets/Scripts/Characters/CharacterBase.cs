@@ -37,7 +37,7 @@ public class CharacterBase : MonoBehaviour
 
     protected virtual void InteractWithTile()
     {
-        GameFlow.Instance.GridManager.InteractableTilemap.CharacterInteraction(m_CurrentTilePos, this);
+        GameFlow.Instance.GridManager.InteractableTilemap.EnemyInteraction(m_CurrentTilePos);
     }
 
     protected virtual void UpdateSelectedTiles()

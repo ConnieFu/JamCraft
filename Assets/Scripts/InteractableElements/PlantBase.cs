@@ -28,28 +28,25 @@ public class PlantBase : PlayerInteractableBase
         }
     }
 
-    public override void OnInteracted(CharacterBase controller)
+    public override void OnTouchHold(Vector2 position)
     {
-        if (string.Compare(controller.tag, GameConstants.PLAYER_TAG) == 0)
+        if (!m_IsBeingHeld) // player picks up plant
         {
-            if (!m_IsBeingHeld) // player picks up plant
-            {
-                controller.GetComponent<Player>().PickUpPlant(this);
-                m_CellXY = null;
-                m_IsBeingHeld = true;
+            m_CellXY = null;
+            m_IsBeingHeld = true;
 
-                ChangeRendererSortingLayers(GameConstants.CHARACTER_LAYER_NAME);
-            }
+            ChangeRendererSortingLayers(GameConstants.CHARACTER_LAYER_NAME); // change this to a front layer
         }
-        else // it's an enemyyyyyy
-        {
-            m_CurrentHits++;
+    }
 
-            if (m_CurrentHits >= m_NumberHits)
-            {
-                // play death animation
-                DestroySelf();
-            }
+    public override void OnEnemyHit()
+    { 
+        m_CurrentHits++;
+
+        if (m_CurrentHits >= m_NumberHits)
+        {
+            // play death animation
+            DestroySelf();
         }
     }
 
