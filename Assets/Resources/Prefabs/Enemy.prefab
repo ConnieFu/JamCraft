@@ -125,8 +125,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6762901826386800215}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.78, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 6762901825992624273}
   m_RootOrder: 0
@@ -169,8 +169,7 @@ SpriteRenderer:
   m_SortingLayerID: 1939688483
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5147866727714234303, guid: 537219536a2e54d99baf8b1fea0859c6,
-    type: 3}
+  m_Sprite: {fileID: 371478077240724524, guid: f3884d513128c46bfba3cb3ac2a05be6, type: 3}
   m_Color: {r: 0.3584906, g: 0.11667854, b: 0.11667854, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -191,7 +190,7 @@ Animator:
   m_GameObject: {fileID: 6762901826386800215}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b351e782dc5424d1694f38726392bc2d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 270aa1de4c2ad4941b135f02cb312018, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
