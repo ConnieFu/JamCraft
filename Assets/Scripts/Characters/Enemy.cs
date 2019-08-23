@@ -82,26 +82,26 @@ public class Enemy : CharacterBase
         }
         if ((GameFlow.Instance.GridManager.GetCellWorldPos(m_CurrentTilePos) - transform.position).magnitude <= ENEMY_IN_CENTER_OF_CELL_THRESHOLD)
         {
-            m_FacingDirection = m_Path[0] - m_CurrentTilePos;
+            //m_FacingDirection = m_Path[0] - m_CurrentTilePos;
 
-            if (m_FacingDirection == Vector3Int.up)
-            {
-                m_Animator.SetInteger("Direction", 1);
-            }
-            else if (m_FacingDirection == Vector3Int.down)
-            {
-                m_Animator.SetInteger("Direction", 0);
-            }
-            else if (m_FacingDirection == Vector3Int.right)
-            {
-                m_Animator.SetInteger("Direction", 2);
-                m_SpriteRenderer.flipX = false;
-            }
-            else if (m_FacingDirection == Vector3Int.left)
-            {
-                m_Animator.SetInteger("Direction", 2);
-                m_SpriteRenderer.flipX = true;
-            }
+            //if (m_FacingDirection == Vector3Int.up)
+            //{
+            //    m_Animator.SetInteger("Direction", 1);
+            //}
+            //else if (m_FacingDirection == Vector3Int.down)
+            //{
+            //    m_Animator.SetInteger("Direction", 0);
+            //}
+            //else if (m_FacingDirection == Vector3Int.right)
+            //{
+            //    m_Animator.SetInteger("Direction", 2);
+            //    m_SpriteRenderer.flipX = false;
+            //}
+            //else if (m_FacingDirection == Vector3Int.left)
+            //{
+            //    m_Animator.SetInteger("Direction", 2);
+            //    m_SpriteRenderer.flipX = true;
+            //}
 
             // check if tile is empty in front of enemy. if tile has object, attack it
             // don't move the character anymore
@@ -142,7 +142,7 @@ public class Enemy : CharacterBase
         else
         {
             m_Velocity = (Vector3)m_FacingDirection * m_Speed;
-            m_Animator.SetBool("IsMoving", true);
+            //m_Animator.SetBool("IsMoving", true);
         }
         m_CharacterRigidBody.velocity = m_Velocity;
 
@@ -179,6 +179,6 @@ public class Enemy : CharacterBase
     private void StopMoving()
     {
         m_CharacterRigidBody.velocity = Vector3.zero;
-        m_Animator.SetBool("IsMoving", false);
+        //m_Animator.SetBool("IsMoving", false);
     }
 }
