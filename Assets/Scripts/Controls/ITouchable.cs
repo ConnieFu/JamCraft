@@ -7,5 +7,5 @@ public interface ITouchable
 	void OnTouchBegin();
     void OnTouchTapped();
 	void OnTouchHold(Vector2 position);
-    void OnTouchEnd();
+    void OnTouchEnd(Vector2 position, bool wasTapped);
 }

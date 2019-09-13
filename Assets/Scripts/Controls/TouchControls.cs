@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: If the touch ends off of the object, cancel the touch somehow?? 
 public class TouchControls : MonoBehaviour
 {
     RaycastHit2D m_TouchRaycastHit;
     private ITouchable m_CurrentTouchable;
     private float m_TapTimer;
+    private bool m_WasTapped;
 
     private void Update()
     {
@@ -37,11 +39,13 @@ public class TouchControls : MonoBehaviour
                             break;
 
                         case TouchPhase.Ended:
+                            m_WasTapped = false;
                             if (m_TapTimer <= GameConstants.TAP_TIME)
                             {
                                 m_CurrentTouchable.OnTouchTapped();
+                                m_WasTapped = true;
                             }
-                            m_CurrentTouchable.OnTouchEnd();
+                            m_CurrentTouchable.OnTouchEnd(Camera.main.ScreenToWorldPoint(touch.position), m_WasTapped);
                             m_CurrentTouchable = null;
                             break;
                     }
@@ -71,11 +75,13 @@ public class TouchControls : MonoBehaviour
         {
             if (m_CurrentTouchable != null)
             {
+                m_WasTapped = false;
                 if (m_TapTimer <= GameConstants.TAP_TIME)
                 {
                     m_CurrentTouchable.OnTouchTapped();
+                    m_WasTapped = true;
                 }
-                m_CurrentTouchable.OnTouchEnd();
+                m_CurrentTouchable.OnTouchEnd(Camera.main.ScreenToWorldPoint(Input.mousePosition), m_WasTapped);
                 m_CurrentTouchable = null;
             }
         }

@@ -37,6 +37,8 @@ public class PlantBase : PlayerInteractableBase
 
             ChangeRendererSortingLayers(GameConstants.CHARACTER_LAYER_NAME); // change this to a front layer
         }
+
+        transform.position = position;
     }
 
     public override void OnEnemyHit()
@@ -70,19 +72,21 @@ public class PlantBase : PlayerInteractableBase
         DestroySelf();
     }
 
-    public void PlacePlant(Vector3Int cell)
+    // TODO: maybe have specific z depths for each row of tiles so layering is easier
+    // TODO: Handle placing the plant only on spaces it can be placed (ie. find the nearest placable tile)
+    public override void OnTouchEnd(Vector2 position, bool wasTapped)
     {
         m_IsBeingHeld = false;
-
         ChangeRendererSortingLayers(GameConstants.INTERACTABLE_LAYER_NAME);
 
-        m_CellXY = cell;
+        m_CellXY = GameFlow.Instance.GridManager.WorldPosToCell(position);
 
         GameFlow.Instance.GridManager.InteractableTilemap.AddInteractableObject(this);
         transform.parent = GameFlow.Instance.GridManager.InteractableTilemap.PlantAnchor;
-        transform.position = GameFlow.Instance.GridManager.GetCellWorldPos(cell);
+        transform.position = GameFlow.Instance.GridManager.GetCellWorldPos(m_CellXY.Value);
     }
 
+    // change the sorting layer so the objects are seen nicely in the scene
     private void ChangeRendererSortingLayers(string layerName)
     {
         m_FlowerComponent.ChangeRenderingLayerInfo(layerName);

@@ -25,7 +25,7 @@ public class CharacterPickUp : MonoBehaviour
 
     public void Initialize()
     {
-        m_EnergyManager.Initialize();
+        //m_EnergyManager.Initialize();
 
         m_ParticlesDictionary.Add(GameConstants.eEnergyType.DEFAULT, m_DefaultPickUpParticles);
         m_ParticlesDictionary.Add(GameConstants.eEnergyType.FIRE, m_FirePickUpParticles);

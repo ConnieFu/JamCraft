@@ -54,7 +54,7 @@ public abstract class PlayerInteractableBase : MonoBehaviour, ITouchable
     {
     }
 
-    public virtual void OnTouchEnd()
+    public virtual void OnTouchEnd(Vector2 position, bool wasTapped)
     {
     }
 }

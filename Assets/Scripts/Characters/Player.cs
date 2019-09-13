@@ -140,7 +140,7 @@ public class Player : CharacterBase
     {
         if (GameFlow.Instance.GridManager.InteractableTilemap.CanPlacePlant(m_CurrentTilePos))
         {
-            m_HeldPlant.PlacePlant(m_CurrentTilePos);
+            //m_HeldPlant.PlacePlant(m_CurrentTilePos);
             m_HeldPlant = null;
         }
     }

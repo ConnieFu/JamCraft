@@ -111,6 +111,7 @@ public class GameFlow : MonoBehaviour
         m_DayNightCycle.Initialize();
         m_GridManager.Initialize();
         m_CraftingManager.Initialize();
+        m_EnergyManager.Initialize();
   
         // show main menu first
         m_Instance.ShowMainMenu();

@@ -58,7 +58,7 @@ public class Energy : MonoBehaviour, ITouchable
     {
     }
 
-    public void OnTouchEnd()
+    public void OnTouchEnd(Vector2 position, bool wasTapped)
     {
     }
 }
